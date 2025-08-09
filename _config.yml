@@ -25,7 +25,7 @@ email: ojh93830@gmail.com
 description: |
   I am B.S student  majoring in mechanical engineering at Koreatech University, working as a research assistant in the Robotics Lab under Professor Woong-Yong Lee.
   My dedication lies in creating robots that not only communicate with people but also move with a natural, lifelike quality.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "https://jaehyeokoh.github.io" # the subpath of your site, e.g. /blog
 url: "https://jaehyeokoh.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username:
 github_username: jaehyeokoh

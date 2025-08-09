@@ -38,88 +38,79 @@ layout: null
 
 <body>
 
-  <section class="hero">
-    <div class="hero-body container is-max-desktop">
-      <div class="columns">
-
-        <div class="column is-4">
-          <figure class="image portrait">
-            <img src="{{ '/images/portrait.jpg' | relative_url }}" />
-          </figure>
-        </div>
-
-        <div class="column">
-          <h1 class="title">
-            <b>Hello, I'm {{ site.name }}</b>
-          </h1>
-          <div class="content has-text-justified">
-            {{ site.description | markdownify }}
-            <div class="buttons">
-              <a class="external-link button is-light" href="cv.html">
-                <span class="icon"><i class="fas fa-file"></i></span>
-                <span>CV</span>
-              </a>
-
-              <a class="external-link button is-light"
-                href="https://scholar.google.com/citations?user={{ site.google_scholar }}">
-                <span class="icon"><i class="ai ai-google-scholar"></i></span>
-                <span>Scholar</span>
-              </a>
-
-              <a class="external-link button is-light" href="https://github.com/{{ site.github_username }}">
-                <span class="icon"><i class="fab fa-github"></i></span>
-                <span>Github</span>
-              </a>
-
-              <a class="external-link button is-light" href="https://twitter.com/{{ site.twitter_username }}">
-                <span class="icon"><i class="fab fa-twitter"></i></span>
-                <span>Twitter</span>
-              </a>
-            </div>
-
-          </div>
-        </div>
+  <section class="hero is-medium">
+    <div class="hero-body has-text-centered">
+      <figure class="image is-128x128 is-inline-block">
+        <img class="is-rounded" src="{{ '/images/portrait.jpg' | relative_url }}" />
+      </figure>
+      <h1 class="title mt-4">
+        {{ site.name }}
+      </h1>
+      <p class="subtitle">{{ site.description }}</p>
+      
+      <div class="social-icons mt-4">
+        <a class="icon-link" href="mailto:{{ site.email }}">
+          <i class="fas fa-envelope fa-2x"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/{{ site.github_username }}">
+          <i class="fab fa-github fa-2x"></i>
+        </a>
+        <a class="icon-link" href="https://linkedin.com/in/{{ site.linkedin_username }}">
+          <i class="fab fa-linkedin fa-2x"></i>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- News. -->
-  <div class="hr">
-    <div class="container">
-      <hr>
-    </div>
-  </div>
-
+  <!-- News Section -->
   <section class="section">
     <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">News</h2>
+      <div class="content">
+        <ul>
+          {% for news in site.data.news limit:5 %}
+          <li>
+            <strong>{{ news.date }}</strong>: {{ news.description }}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </section>
 
-      <h2 class="title is-3">Highlights</h2>
+  <!-- Projects Section -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Projects</h2>
       <div class="columns is-multiline">
-        {% for highlight in site.data.highlights %}
+        {% for project in site.data.projects %}
         <div class="column is-4">
-          <div class="card highlight-card">
+          <div class="card">
             <div class="card-image">
-              <figure class="image">
-                {% if highlight.video %}
-                <video autoplay loop muted playsinline class="highlight-media">
-                  <source src="./images/{{ highlight.video }}" type="video/mp4">
-                  <img src="./images/{{ highlight.image }}" alt="{{ highlight.title }}">
-                </video>
-                {% else %}
-                <img src="./images/{{ highlight.image }}" alt="{{ highlight.title }}">
-                {% endif %}
+              <figure class="image is-4by3">
+                <img src="./images/{{ project.image }}" alt="{{ project.title }}">
               </figure>
             </div>
             <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-5 highlight-title">
-                    <a href="{{ highlight.url }}" target="_blank" rel="noopener">{{ highlight.title }}</a>
-                  </p>
-                </div>
+              <h3 class="title is-5">{{ project.title }}</h3>
+              <div class="content">
+                {{ project.description | truncate: 100 }}
               </div>
-              <div class="content highlight-description">
-                {{ highlight.description }}
+              <div class="buttons">
+                <a href="{{ project.url }}" class="button is-small is-primary">
+                  <span class="icon">
+                    <i class="fas fa-external-link-alt"></i>
+                  </span>
+                  <span>View</span>
+                </a>
+                {% if project.github %}
+                <a href="{{ project.github }}" class="button is-small is-light">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+                {% endif %}
               </div>
             </div>
           </div>
@@ -227,7 +218,7 @@ layout: null
         <div class="column is-8">
           <div class="content">
             <p>
-              Feel free to <a href="https://github.com/keunhong/keunhong.github.io">borrow this template</a>.
+              Feel free to <a href="https://github.com/jaehyeokoh/jaehyeokoh.github.io">borrow this template</a>.
             </p>
           </div>
         </div>
