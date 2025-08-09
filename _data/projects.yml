@@ -1,0 +1,19 @@
+- title: "A multi-modal robotic control system that interprets high-level natural language commands "
+  year: "2025"
+  description: "Developing natural communication interfaces for robots to interact with humans more effectively."
+  tech_stack: "Python, LLM, Vision"
+  page_url: "/projects/project1_neuromkea/"
+  links:
+    - name: "GitHub"
+      url: "https://github.com/jaehyeokoh/project1"
+    # - name: "Paper"
+    #   url: "#"
+
+# - title: "Lifelike Robot Motion Control"
+#   year: "2023-2024"
+#   description: "Research on creating more natural and lifelike movements in robotic systems."
+#   tech_stack: "MATLAB, Robotics Toolbox"
+#   page_url: "/projects/lifelike-robot-motion/"
+#   links:
+#     - name: "GitHub"
+#       url: "https://github.com/jaehyeokoh/project2"

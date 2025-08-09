@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="project-page">
+        <!-- Back to main page link -->
+        <div class="back-link">
+            <a href="{{ '/' | relative_url }}">&larr; Back to Portfolio</a>
+        </div>
+        
+        <!-- Project Header -->
+        <div class="project-header">
+            <h1>{{ page.title }}</h1>
+            <div class="project-meta">
+                <span class="year">{{ page.year }}</span>
+                {% if page.tech_stack %}
+                <span class="tech-stack">{{ page.tech_stack }}</span>
+                {% endif %}
+                {% if page.status %}
+                <span class="status">{{ page.status }}</span>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Project Content -->
+        <div class="project-content">
+            {{ content }}
+        </div>
+        
+        <!-- Project Links -->
+        {% if page.links %}
+        <div class="project-links-section">
+            <h3>Links</h3>
+            <div class="project-links">
+                {% for link in page.links %}
+                <a href="{{ link.url }}" target="_blank" class="project-link">
+                    <i class="{% if link.name == 'GitHub' %}fab fa-github{% elsif link.name == 'Paper' %}fas fa-file-alt{% elsif link.name == 'Demo' %}fas fa-external-link-alt{% else %}fas fa-link{% endif %}"></i>
+                    {{ link.name }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

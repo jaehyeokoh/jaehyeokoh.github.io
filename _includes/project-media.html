@@ -1,0 +1,59 @@
+{% comment %}
+사용법:
+{% include project-media.html 
+   type="image" 
+   src="image.jpg" 
+   alt="설명" 
+   caption="이미지 설명" 
+%}
+
+프로젝트 이름은 페이지 URL에서 자동으로 추출됩니다.
+예: /projects/human-robot-communication/ → human-robot-communication
+{% endcomment %}
+
+<!-- 프로젝트 이름 자동 추출 (확장자 제거) -->
+{% assign project_name = page.url | split: '/' | last %}
+{% if project_name == '' %}
+  {% assign project_name = page.url | split: '/' | slice: -2, 1 | first %}
+{% endif %}
+<!-- .html과 .md 확장자 모두 제거 -->
+{% assign project_name = project_name | replace: '.html', '' | replace: '.md', '' %}
+
+<div class="project-media {{ include.type }}{% if include.size %} {{ include.size }}{% endif %}">
+  {% if include.type == "image" or include.type == "gif" %}
+    <img src="{{ '/assets/projects/' | append: project_name | append: '/' | append: include.src | relative_url }}" 
+         alt="{{ include.alt | default: include.caption }}"
+         {% if include.width %}width="{{ include.width }}"{% endif %}
+         {% if include.height %}height="{{ include.height }}"{% endif %}>
+  
+  {% elsif include.type == "video" %}
+    <video controls 
+           {% if include.autoplay %}autoplay{% endif %}
+           {% if include.loop %}loop{% endif %}
+           {% if include.muted %}muted{% endif %}
+           {% if include.width %}width="{{ include.width }}"{% else %}width="100%"{% endif %}>
+      <source src="{{ '/assets/projects/' | append: project_name | append: '/' | append: include.src | relative_url }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  
+  {% elsif include.type == "youtube" %}
+    <div class="youtube-wrapper">
+      <iframe src="https://www.youtube.com/embed/{{ include.id }}{% if include.start %}?start={{ include.start }}{% endif %}" 
+              frameborder="0" 
+              allowfullscreen>
+      </iframe>
+    </div>
+  
+  {% elsif include.type == "gallery" %}
+    <div class="image-gallery">
+      {% for image in include.images %}
+        <img src="{{ '/assets/projects/' | append: project_name | append: '/' | append: image.src | relative_url }}" 
+             alt="{{ image.alt | default: image.caption }}">
+      {% endfor %}
+    </div>
+  {% endif %}
+  
+  {% if include.caption %}
+    <p class="media-caption">{{ include.caption }}</p>
+  {% endif %}
+</div>
