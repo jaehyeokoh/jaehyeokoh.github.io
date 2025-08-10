@@ -287,6 +287,22 @@ body {
     }
 }
 
+/* 2-up media grid */
+.media-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+/* 그리드 안에서는 카드 마진 제거 */
+.media-grid-2 .project-media { margin: 0; }
+
+/* 모바일에서는 1열로 */
+@media (max-width: 768px) {
+  .media-grid-2 { grid-template-columns: 1fr; }
+}
+
 // YouTube 비디오 반응형
 .youtube-wrapper {
     position: relative;
