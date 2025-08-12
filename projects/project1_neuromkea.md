@@ -17,12 +17,31 @@ links:
 
 Recently, the performance of large language models (LLMs) has been continuously improving. There have been various attempts to apply LLMs to robotics, and foundation models trained entirely for robots are emerging. However, creating training data and training models for robots is difficult for ordinary users to access. Therefore, I introduce a project that controls a robot using off-the-shelf LLM (that a general-purpose LLM rather than a robot-specialized one : GPT). In pipeline, the LLM serves as a high-level planner that performs planning by leveraging its greatest strength, natural-language generation, while delegating the LLM’s weakness(e.g spatial coordinate calculation) to other external modules such as DINO , SAM, Anygrasp. I also present a method that mutually compensates for two drawbacks: the weakness of VLMs in outputting concrete coordinates, and the DINO model’s inability to provide natural-language state descriptions about the detected object. As a result, this project shows that the system can execute tasks ranging from simple pick-and-place commands (“grasp the ~”), to interpreting user instructions (“give me something to eat”, “grab what looks like it may fall from the desk”), and further, high level commands that require multi-step reasoning (“make a dolmen shape using what is visible on the screen”).
 
-## Example video
+## Example video (2x Speed)
 
 <div class="media-grid-2">
   {% include project-media.html type="video" src="neuro1.mp4" caption="input : 흰 박스를 제외한 나머지 물건들을 작은 것부터 순서대로 하나는 흰 박스 앞에, 하나는 흰 박스 위에, 하나는 흰 박스 뒤쪽에 놔줘" muted=true autoplay=true loop=true%}
-  {% include project-media.html type="video" src="neuro_beverage.mp4" caption="input :먹을 수 있는 건 흰 박스 앞에, 먹을 수 없는 건 흰 박스 뒤에 놔" muted=true autoplay=true loop=true%}
+  {% include project-media.html type="video" src="neuro_beverage.mp4" caption="input : 먹을 수 있는 건 흰 박스 앞에, 먹을 수 없는 건 흰 박스 뒤에 놔" muted=true autoplay=true loop=true%}
 </div>
+
+<div class="media-grid-2">
+  {% include project-media.html type="video" src="falling_obj_catch.mp4" caption="input : 곧 떨어질 것 같은 물건을 잡아" muted=true autoplay=true loop=true%}
+  {% include project-media.html type="video" src="food_name.mp4" caption="input : 포카리 스웨트를 후레쉬 베리 위에 올려" muted=true autoplay=true loop=true%}
+</div>
+
+<div class="media-grid-2">
+  {% include project-media.html type="video" src="proper_crate.mp4" caption="input : 음료수를 적절한 상자에 놔" muted=true autoplay=true loop=true%}
+  {% include project-media.html type="video" src="food_crate.mp4" caption="input : 음료수를 음식 상자에 놔" muted=true autoplay=true loop=true%}
+</div>
+
+{% include project-media.html
+   type="video"
+   src="complex_input.mp4"
+   caption="나 목마르니 적절한 물건을 흰 상자 위에 올려 그리고 나머지 물건들을 큰것 부터 하나는 흰 상자 오른쪽에 하나는 흰 상자 앞에 놔"
+   autoplay=true
+   muted=true
+   loop=true
+%}
 
 {% include project-media.html
    type="image"

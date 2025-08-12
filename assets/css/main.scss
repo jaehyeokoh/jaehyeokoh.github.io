@@ -298,6 +298,7 @@ body {
 /* 그리드 안에서는 카드 마진 제거 */
 .media-grid-2 .project-media { margin: 0; }
 
+
 /* 모바일에서는 1열로 */
 @media (max-width: 768px) {
   .media-grid-2 { grid-template-columns: 1fr; }
