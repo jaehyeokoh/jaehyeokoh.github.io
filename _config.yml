@@ -6,11 +6,11 @@ description: |
   I am B.S student majoring in mechanical engineering at Koreatech University, working as a research student in the Robotics Lab under Professor Woong-Yong Lee.
   My dedication lies in creating robots that not only communicate with people but also move with a natural, lifelike quality.
 
-baseurl: "" # 로컬 개발시에는 비워두세요
-url: "http://localhost:4000" # 로컬 개발시
+# baseurl: "" # 로컬 개발시에는 비워두세요
+# url: "http://localhost:4000" # 로컬 개발시
 # 배포시에는 다음과 같이 변경:
-# baseurl: ""
-# url: "https://jaehyeokoh.github.io"
+baseurl: ""
+url: "https://jaehyeokoh.github.io"
 twitter_username:
 github_username: jaehyeokoh
 google_scholar:
