@@ -72,8 +72,8 @@ For a robot to successfully execute a task, it must accurately determine the pos
 <div class="media-grid-2">
   {% include project-media.html type="image" src="screw_failed.png" caption="Fig. 2  Output of Grounding DINO with the text query “screw”. 
    The model incorrectly detects unrelated objects (e.g., a pen and a can) and assigns low confidence scores to the actual screw. 
-   This illustrates its limitations in accurately identifying small or specific items, especially when multiple visually similar objects are present."}
-  {% include project-media.html type="image" src="snack_failed.png" caption="Fig. 3  Output of Grounding DINO for the query “snack”. The model misclassifies a pen and a black box as snacks, demonstrating the weakness in semantic understanding and category precision."}
+   This illustrates its limitations in accurately identifying small or specific items, especially when multiple visually similar objects are present." muted=true autoplay=true loop=true%}
+  {% include project-media.html type="image" src="snack_failed.png" caption="Fig. 3  Output of Grounding DINO for the query “snack”. The model misclassifies a pen and a black box as snacks, demonstrating the weakness in semantic understanding and category precision." muted=true autoplay=true loop=true%}
 </div>
 
 ### Perception - Basic Idea
@@ -84,8 +84,8 @@ As shown in Fig. 4, the VLM correctly assigned semantic labels such as “food�
 
 
 <div class="media-grid-2">
-  {% include project-media.html type="image" src="perception_description.png" caption="Fig. 4"}
-  {% include project-media.html type="image" src="might_fall_from_table.jpg" caption="Fig. 5" }
+  {% include project-media.html type="image" src="perception_description.png" caption="Fig. 4" muted=true autoplay=true loop=true%}
+  {% include project-media.html type="image" src="might_fall_from_table.jpg" caption="Fig. 5" muted=true autoplay=true loop=true%}
 </div>
 
 {% include project-media.html
