@@ -2,7 +2,7 @@
   year: "2025"
   description: "Developing natural communication interfaces for robots to interact with humans more effectively."
   tech_stack: "Python, LLM, Vision"
-  page_url: "/projects/project1_neuromkea/"
+  page_url: "/projects/project1_LLM_controlled_robot/"
   links:
     - name: "GitHub"
       url: "https://github.com/jaehyeokoh/project1"
