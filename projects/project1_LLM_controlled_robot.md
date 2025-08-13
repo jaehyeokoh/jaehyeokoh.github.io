@@ -62,14 +62,14 @@ By combining these techniques, the system executes a wide range of commands — 
    type="image"
    src="perception_description.png"
    caption="Fig2"
-   size="large"
+   size="extreme"
 %}
 
 {% include project-media.html
    type="image"
    src="perception_map.png"
    caption="Fig3"
-   size="large"
+   size="extreme"
 %}
 
 ## Research Objectives

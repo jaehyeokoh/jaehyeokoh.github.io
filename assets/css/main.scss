@@ -285,6 +285,13 @@ body {
             width: 100%;
         }
     }
+    
+    &.extreme {
+        img, video { 
+            max-width: 120%;
+            width: 120%;
+        }
+    }
 }
 
 /* 2-up media grid */
