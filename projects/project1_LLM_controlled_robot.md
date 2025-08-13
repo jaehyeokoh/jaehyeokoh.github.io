@@ -104,7 +104,7 @@ These results confirm that the proposed combination is effective for semantic ob
 {% include project-media.html
    type="image"
    src="perception_map.png"
-   caption="**Fig. 6**  (1) : object detection with Grounding DINO, (2) : semantic classification with the VLM, (3, 4) : segmentation and 3D property extraction from bounding boxes using SAM, (5) : interpolate point cloud to enhance Anygrasp performance"
+   caption="Fig. 6  (1) : object detection with Grounding DINO, (2) : semantic classification with the VLM, (3, 4) : segmentation and 3D property extraction from bounding boxes using SAM, (5) : interpolate point cloud to enhance Anygrasp performance"
    size="full"
 %}
 
@@ -124,7 +124,7 @@ This makes side point cloud interpolation a critical step in ensuring reliable g
 {% include project-media.html
    type="image"
    src="side_compare.png"
-   caption="**Fig. 7**  (1) : Original object, (2) : Generated point cloud with top-down view (3) : interpolated point cloud to enhance Anygrasp performance"
+   caption="Fig. 7  (1) : Original object, (2) : Generated point cloud with top-down view (3) : interpolated point cloud to enhance Anygrasp performance"
    size="large"
 %}
 
