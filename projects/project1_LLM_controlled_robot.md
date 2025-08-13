@@ -138,7 +138,7 @@ This augmentation improves AnyGrasp’s ability to generate stable grasp poses, 
 
 
 
-## Research Objectives
+<!-- ## Research Objectives
 
 - **Natural Language Processing**: Implement advanced NLP algorithms to understand human speech and intent
 - **Computer Vision**: Develop visual recognition systems for gesture and facial expression analysis
@@ -214,4 +214,4 @@ This augmentation improves AnyGrasp’s ability to generate stable grasp poses, 
 
 ## Related Publications
 
-*Research paper in preparation for submission to ICRA 2025*
+*Research paper in preparation for submission to ICRA 2025* -->
