@@ -72,23 +72,21 @@ For a robot to successfully execute a task, it must accurately determine the pos
 <div class="media-grid-2">
   {% include project-media.html type="image" src="screw_failed.png" caption="Fig. 2  Output of Grounding DINO with the text query “screw”. 
    The model incorrectly detects unrelated objects (e.g., a pen and a can) and assigns low confidence scores to the actual screw. 
-   This illustrates its limitations in accurately identifying small or specific items, especially when multiple visually similar objects are present." muted=true autoplay=true loop=true%}
-  {% include project-media.html type="image" src="snack_failed.png" caption="Fig. 3  Output of Grounding DINO for the query “snack”. The model misclassifies a pen and a black box as snacks, demonstrating the weakness in semantic understanding and category precision." muted=true autoplay=true loop=true%}
+   This illustrates its limitations in accurately identifying small or specific items, especially when multiple visually similar objects are present."}
+  {% include project-media.html type="image" src="snack_failed.png" caption="Fig. 3  Output of Grounding DINO for the query “snack”. The model misclassifies a pen and a black box as snacks, demonstrating the weakness in semantic understanding and category precision."}
 </div>
 
 ### Perception - Basic Idea
 
 The perception module leverages the complementary strengths of two models: (1) Grounding DINO’s robust bounding box generation, and (2) a vision–language model’s semantic identification ability.
 To test this idea, I combined both: first generating bounding boxes with DINO, then letting the VLM classify each detected object.
-As shown in Fig. 4, the VLM correctly assigned semantic labels such as “food” or “non-food” based on appearance and packaging, even for objects that DINO alone would misidentify. This confirms that the proposed combination is effective for semantic object understanding.
+As shown in Fig. 4, the VLM correctly assigned semantic labels such as “food” or “non-food” based on appearance and packaging, even for objects that DINO alone would misidentify.Furthermore, as demonstrated in Fig.5, the same pipeline can also infer physical properties and contextual conditions, such as identifying an object that is likely to fall from the desk edge. This confirms that the proposed combination is effective for semantic object understanding.
 
 
-{% include project-media.html
-   type="image"
-   src="perception_description.png"
-   caption="Fig4"
-   size="full"
-%}
+<div class="media-grid-2">
+  {% include project-media.html type="image" src="perception_description.png" caption="input : Fig. 4"}
+  {% include project-media.html type="image" src="might fall from table.jpg" caption="Fig. 5" }
+</div>
 
 {% include project-media.html
    type="image"
