@@ -58,14 +58,17 @@ By combining these techniques, the system executes a wide range of commands — 
 ### 1. Perception
 
 
-
-
-
+{% include project-media.html
+   type="image"
+   src="perception_description.png"
+   caption="Fig2"
+   size="large"
+%}
 
 {% include project-media.html
    type="image"
-   src="image1.png"
-   caption="System architecture overview showing the integration of speech recognition, computer vision, and response generation modules"
+   src="perception_map.png"
+   caption="Fig3"
    size="large"
 %}
 
