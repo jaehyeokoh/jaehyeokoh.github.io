@@ -531,3 +531,6 @@ body {
 .image-zoom-overlay.open{display:flex}
 .image-zoom-overlay img{max-width:90vw;max-height:90vh;box-shadow:0 10px 30px rgba(0,0,0,.5);border-radius:12px}
 a.zoom img{cursor:zoom-in}
+.image-zoom-overlay, .image-zoom-overlay img{ cursor: zoom-out; }
+.image-zoom-overlay:focus{ outline: none; }
+.image-zoom-overlay img{ pointer-events:auto; }
