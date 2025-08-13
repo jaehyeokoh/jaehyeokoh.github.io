@@ -28,7 +28,7 @@ Recently, the performance of large language models (LLMs) has been continuously 
 
 
 
-## Demo video (2x Speed)
+## Demo video (2× Speed, user input shown below)
 
 <div class="media-grid-2">
   {% include project-media.html type="video" src="neuro1.mp4" caption="input : 흰 박스를 제외한 나머지 물건들을 작은 것부터 순서대로 하나는 흰 박스 앞에, 하나는 흰 박스 위에, 하나는 흰 박스 뒤쪽에 놔줘" muted=true autoplay=true loop=true%}
