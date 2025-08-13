@@ -13,7 +13,6 @@ links:
 #   - name: "Demo"
 #     url: "#"
 ---
-## Overview of system
 
 {% include project-media.html
    type="image"
