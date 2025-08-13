@@ -17,7 +17,7 @@ links:
 {% include project-media.html
    type="image"
    src="full_map.jpg"
-   caption="(Fig1) System architecture"
+   caption="Fig. 1. System overview. A multi-agent architecture where each agent is guided by a dedicated system prompt. The Task Router parses user instructions, assesses task difficulty, and routes subtasks to either a Simple task Agent or a Hard task agent. The Simple task Agent composes executable action sequences for the robot arm; the Hard Task Agent delegates complex subtasks to Specialized Agents (e.g., assembly, trajectory generation) that return robot-ready plans. Both agents query the Vision Agent (VLM + DINO + SAM) to localize targets and estimate position and dimensions, generating an interpolated point cloud made with SAM output. The Action Executor runs the plan, using AnyGrasp for grasping with the interpolated point cloud as input. "
    size="full"
 %}
 
