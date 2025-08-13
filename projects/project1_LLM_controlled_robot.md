@@ -67,7 +67,14 @@ By combining these techniques, the system executes a wide range of commands — 
 
 ### 1. Perception
 
-For a robot to successfully execute a task, it must accurately determine the position, size, and geometry of target objects. However, existing vision–language models (VLMs) struggle to directly output precise spatial coordinates. Object detection models such as Grounding DINO, although capable of generating bounding boxes and object contours, cannot identify targets purely based on semantic properties (e.g., “objects that look like they might fall”) or by recognizing specialized object names (e.g., “Pocari Sweat”). To address these complementary weaknesses, I designed a hybrid perception pipeline that integrates the semantic reasoning ability of VLMs with the spatial accuracy of object detectors and segmentation models.
+For a robot to successfully execute a task, it must accurately determine the position, size, and geometry of target objects. However, existing vision–language models (VLMs) struggle to directly output precise spatial coordinates. Object detection models such as Grounding DINO, although capable of generating bounding boxes and object contours, cannot identify targets purely based on semantic properties (e.g., “objects that look like they might fall”) or by recognizing specialized object names (e.g., “Pocari Sweat”) and often exhibit low accuracy in such cases (Fig. 2). To address these complementary weaknesses, I designed a hybrid perception pipeline that integrates the semantic reasoning ability of VLMs with the spatial accuracy of object detectors and segmentation models.
+
+{% include project-media.html
+   type="image"
+   src="screw_failed.png"
+   caption="Fig. 2 Output of Grounding DINO with the text query “screw”. The model incorrectly detects unrelated objects (e.g., a pen and a can) and assigns low confidence scores to the actual screw. This illustrates its limitations in accurately identifying small or specific items, especially when multiple visually similar objects are present."
+   size="full"
+%}
 
 {% include project-media.html
    type="image"
