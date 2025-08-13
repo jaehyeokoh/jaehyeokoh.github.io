@@ -18,7 +18,7 @@ links:
 {% include project-media.html
    type="image"
    src="full_map.jpg"
-   caption="Fig1"
+   caption="(Fig1) System architecture"
    size="full"
 %}
 
