@@ -4,7 +4,7 @@ title: "A multi-modal robotic control system that interprets high-level natural 
 year: "2025"
 tech_stack: "Python, LLM, Vision"
 status: "Ongoing"
-permalink: /projects/project1_neuromkea/
+permalink: /projects/project1_LLM_controlled_robot/
 links:
   - name: "GitHub"
     url: "https://github.com/jaehyeokoh/human-robot-communication"
@@ -38,12 +38,17 @@ Recently, the performance of large language models (LLMs) has been continuously 
 {% include project-media.html
    type="video"
    src="complex_input.mp4"
-   caption="나 목마르니 적절한 물건을 흰 상자 위에 올려 그리고 나머지 물건들을 큰것 부터 하나는 흰 상자 오른쪽에 하나는 흰 상자 앞에 놔"
+   caption="input : 나 목마르니 적절한 물건을 흰 상자 위에 올려 그리고 나머지 물건들을 큰것 부터 하나는 흰 상자 오른쪽에 하나는 흰 상자 앞에 놔"
    autoplay=true
    muted=true
    loop=true
    size="medium"
 %}
+
+## Introduction
+
+
+
 
 {% include project-media.html
    type="image"
