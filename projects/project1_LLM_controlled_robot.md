@@ -118,29 +118,24 @@ Determining a feasible grasp pose for a robot is a challenging task. Large Langu
 However, AnyGrasp’s performance is highly sensitive to missing point cloud data.
 When parts of the object surface are occluded from the camera’s viewpoint, the resulting partial point cloud leads to unstable or incorrect grasp pose generation. As shown in **Fig.  7_(2)**, incomplete geometry causes grasp candidates to be misaligned or placed on irrelevant regions, leading to frequent grasp failures and significantly reducing success rates.
 
+Furthermore, valid grasp poses must avoid potential collisions. Without side-view point cloud data, AnyGrasp lacks awareness of the object’s lateral boundaries and may generate poses that intersect the object’s volume, as illustrated in **Fig. 8**.
+This makes side point cloud interpolation a critical step in ensuring reliable grasp generation.
+
 {% include project-media.html
    type="image"
    src="side_compare.png"
-   caption="Fig. 7  (1) : Original object, (2) : generated point cloud with top-down view (3) : interpolated point cloud to enhance Anygrasp performance"
+   caption="Fig. 7  (1) : Original object, (2) : Generated point cloud with top-down view (3) : interpolated point cloud to enhance Anygrasp performance"
    size="large"
 %}
+
+
+### 2.2 
 
 In this project, the robot consistently captures scenes from a top-down viewpoint, which inherently leaves large portions of the object’s side surfaces unobserved.
 To mitigate this limitation, Step 5 of Fig. 6 introduces a simple side point cloud interpolation method: the object’s convex hull contour (in the XY-plane) is extruded vertically to the estimated object height, effectively forming a “wall” of points around the sides.
 This augmentation improves AnyGrasp’s ability to generate stable grasp poses, even when the original sensor data contains significant occlusions.
 
 
-This limitation motivates the development of a side point cloud interpolation strategy to fill in missing object surfaces
-Even with accurate perception, grasp execution is often constrained by:
-
-- **Occlusions**  
-  Single-view depth capture misses object regions hidden from the camera’s line of sight.
-
-- **Gripper Kinematics**  
-  Many generated grasp poses are physically infeasible due to inverse kinematics (IK) limitations or singularities.
-
-- **AnyGrasp’s Limitation**  
-  Generates grasp candidates across the entire scene, rather than focusing on the intended object, leading to irrelevant or risky grasp attempts.
 
 
 ## Research Objectives
