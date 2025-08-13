@@ -116,7 +116,7 @@ Step 1 - 3 was explained before (**fig4, 5**) Step 4 derives the 3D position fro
 Determining a feasible grasp pose for a robot is a challenging task. Large Language Models (LLMs) cannot directly compute physically valid grasp configurations. In this system, the LLM selects which object to grasp, and delegates the grasp pose generation to AnyGrasp.
 
 However, AnyGrasp’s performance is highly sensitive to missing point cloud data.
-When parts of the object surface are occluded from the camera’s viewpoint, the resulting partial point cloud leads to unstable or incorrect grasp pose generation. As shown in **Fig.  7**, incomplete geometry causes grasp candidates to be misaligned or placed on irrelevant regions, significantly reducing success rates.
+When parts of the object surface are occluded from the camera’s viewpoint, the resulting partial point cloud leads to unstable or incorrect grasp pose generation. As shown in **Fig.  7_(2)**, incomplete geometry causes grasp candidates to be misaligned or placed on irrelevant regions, significantly reducing success rates.
 
 {% include project-media.html
    type="image"
