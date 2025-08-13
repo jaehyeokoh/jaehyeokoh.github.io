@@ -78,10 +78,11 @@ For a robot to successfully execute a task, it must accurately determine the pos
 
 ### Perception - Basic Idea
 
-The perception module leverages the complementary strengths of two models: (1) Grounding DINO’s robust bounding box generation, and (2) a vision–language model’s semantic identification ability.
-To test this idea, I combined both: first generating bounding boxes with DINO, then letting the VLM classify each detected object.
-As shown in Fig. 4, the VLM correctly assigned semantic labels such as “food” or “non-food” based on appearance and packaging, even for objects that DINO alone would misidentify.Furthermore, as demonstrated in Fig.5, the same pipeline can also infer physical properties and contextual conditions, such as identifying an object that is likely to fall from the desk edge. This confirms that the proposed combination is effective for semantic object understanding.
+The perception module leverages the complementary strengths of two models: (1) Grounding DINO’s robust bounding box generation, and (2) a vision–language model’s semantic identification ability. To validate this approach, I first generated bounding boxes for all visible objects using Grounding DINO, and then provided each cropped region to the VLM for classification.
 
+As shown in Fig.4, the VLM correctly assigned semantic labels such as “food” or “non-food” based on appearance and packaging, even in cases where DINO alone would misidentify the target. Fig.5 further demonstrates that the same pipeline can infer physical and contextual properties, such as identifying an object likely to fall from the desk edge, by reasoning over spatial relationships and object placement.
+
+These results confirm that the proposed combination is effective for semantic object understanding while overcoming the VLM’s weakness in direct coordinate estimation by leveraging precise bounding boxes from DINO. The complete three-step perception pipeline—(1) object detection with Grounding DINO, (2) semantic classification with the VLM, and (3) segmentation and 3D property extraction using SAM—is illustrated in Fig.6.
 
 <div class="media-grid-2">
   {% include project-media.html type="image" src="perception_description.png" caption="Fig. 4" muted=true autoplay=true loop=true%}
