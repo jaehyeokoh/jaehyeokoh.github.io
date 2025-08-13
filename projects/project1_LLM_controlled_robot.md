@@ -96,7 +96,7 @@ As shown in **Fig.4**, the VLM correctly assigned semantic labels such as “foo
 
 <div class="media-grid-2">
   {% include project-media.html type="image" src="perception_description.png" caption="Fig. 4  Illustration of the VLM’s ability to semantically classify detected objects based on appearance and context." muted=true autoplay=true loop=true%}
-  {% include project-media.html type="image" src="might_fall_from_table.jpg" caption="Fig. 5  Illustration of the system’s capability to infer environmental context, such as identifying objects likely to fall from the desk." muted=true autoplay=true loop=true%}
+  {% include project-media.html type="image" src="might_fall_from_table.jpg" caption=" Fig. 5  Illustration of the system’s capability to infer environmental context, such as identifying objects likely to fall from the desk." muted=true autoplay=true loop=true%}
 </div>
 
 These results confirm that the proposed combination is effective for semantic object understanding while overcoming the VLM’s weakness in direct coordinate estimation by leveraging precise bounding boxes from DINO. The complete perception pipeline is illustrated in **Fig.6.**
@@ -104,7 +104,7 @@ These results confirm that the proposed combination is effective for semantic ob
 {% include project-media.html
    type="image"
    src="perception_map.png"
-   caption="Fig. 6  (1) : object detection with Grounding DINO, (2) : semantic classification with the VLM, (3, 4) : segmentation and 3D property extraction from bounding boxes using SAM, (5) : interpolate point cloud to enhance Anygrasp performance"
+   caption="**Fig. 6**  (1) : object detection with Grounding DINO, (2) : semantic classification with the VLM, (3, 4) : segmentation and 3D property extraction from bounding boxes using SAM, (5) : interpolate point cloud to enhance Anygrasp performance"
    size="full"
 %}
 
@@ -124,7 +124,7 @@ This makes side point cloud interpolation a critical step in ensuring reliable g
 {% include project-media.html
    type="image"
    src="side_compare.png"
-   caption="Fig. 7  (1) : Original object, (2) : Generated point cloud with top-down view (3) : interpolated point cloud to enhance Anygrasp performance"
+   caption="**Fig. 7**  (1) : Original object, (2) : Generated point cloud with top-down view (3) : interpolated point cloud to enhance Anygrasp performance"
    size="large"
 %}
 
