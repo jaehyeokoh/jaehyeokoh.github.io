@@ -108,19 +108,28 @@ These results confirm that the proposed combination is effective for semantic ob
    size="full"
 %}
 
-Step 1 - 3 was explained before (**fig4, 5**) Step 4 derives the 3D position from the centroid of back-projected, SAM-masked depth points, computes the dimensions via a PCA-based oriented bounding box, and generates the object contour as the XY-plane convex hull of the masked points. Step 5, which involves point-cloud interpolation to enhance AnyGrasp performance, will be detailed in the next section.
+Step 1 - 3 was explained before (**fig4, 5**) Step 4 derives the 3D position from the centroid of back-projected, SAM-masked depth points, computes the dimensions via a PCA-based oriented bounding box, and generates the object contour as the XY-plane convex hull of the masked points. Step 5, which involves point-cloud interpolation to enhance AnyGrasp performance, will be detailed in the Control section.
 
 ### 2. Control
 
 ### 2.1 Problem Definition
+Determining a feasible grasp pose for a robot is a challenging task. Large Language Models (LLMs) cannot directly compute physically valid grasp configurations. In this system, the LLM selects which object to grasp, and delegates the grasp pose generation to AnyGrasp.
 
+However, AnyGrasp’s performance is highly sensitive to missing point cloud data.
+When parts of the object surface are occluded from the camera’s viewpoint, the resulting partial point cloud leads to unstable or incorrect grasp pose generation. As shown in **Fig.  7**, incomplete geometry causes grasp candidates to be misaligned or placed on irrelevant regions, significantly reducing success rates.
+
+{% include project-media.html
+   type="image"
+   src="side_compare.png"
+   caption="Fig. 7  (1) : Original object, (2) : generated point cloud with top-down view (3) : interpolate point cloud to enhance Anygrasp performance"
+   size="large"
+%}
+
+This limitation motivates the development of a side point cloud interpolation strategy to fill in missing object surfaces
 Even with accurate perception, grasp execution is often constrained by:
 
 - **Occlusions**  
   Single-view depth capture misses object regions hidden from the camera’s line of sight.
-
-- **Point Cloud Quality**  
-  Noisy or incomplete depth data can reduce grasp planning accuracy.
 
 - **Gripper Kinematics**  
   Many generated grasp poses are physically infeasible due to inverse kinematics (IK) limitations or singularities.
@@ -128,7 +137,7 @@ Even with accurate perception, grasp execution is often constrained by:
 - **AnyGrasp’s Limitation**  
   Generates grasp candidates across the entire scene, rather than focusing on the intended object, leading to irrelevant or risky grasp attempts.
 
-  
+
 ## Research Objectives
 
 - **Natural Language Processing**: Implement advanced NLP algorithms to understand human speech and intent
