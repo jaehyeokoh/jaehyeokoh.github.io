@@ -69,8 +69,7 @@ By combining these techniques, the system executes a wide range of commands — 
 {% include project-media.html
    type="image"
    src="environment_setup.jpg"
-   caption="
-    Experimental hardware setup: 6-DoF Indy-7 arm with parallel-jaw gripper and wrist-mounted Intel RealSense D435i, workspace is a wood-colored table, control on an Intel NUC 11, experiments used the GPT API in Python."
+   caption="The experiments used the hardware shown in the image and the GPT API in Python as the LLM."
    size="large"
 %}
 
