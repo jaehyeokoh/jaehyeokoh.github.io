@@ -97,15 +97,16 @@ As shown in **Fig.4**, the VLM correctly assigned semantic labels such as “foo
   {% include project-media.html type="image" src="might_fall_from_table.jpg" caption="Fig. 5  Illustration of the system’s capability to infer environmental context, such as identifying objects likely to fall from the desk." muted=true autoplay=true loop=true%}
 </div>
 
-These results confirm that the proposed combination is effective for semantic object understanding while overcoming the VLM’s weakness in direct coordinate estimation by leveraging precise bounding boxes from DINO. The complete perception pipeline is illustrated in **Fig.6.**.
-
+These results confirm that the proposed combination is effective for semantic object understanding while overcoming the VLM’s weakness in direct coordinate estimation by leveraging precise bounding boxes from DINO. The complete perception pipeline is illustrated in **Fig.6.**
 
 {% include project-media.html
    type="image"
    src="perception_map.png"
-   caption="Fig. 6  (1) : object detection with Grounding DINO, (2) : semantic classification with the VLM, (3, 4, 5) : segmentation and 3D property extraction from bounding boxes using SAM, (6, 7) : interpolate point cloud to enhance Anygrasp performance"
+   caption="Fig. 6  (1) : object detection with Grounding DINO, (2) : semantic classification with the VLM, (3, 4) : segmentation and 3D property extraction from bounding boxes using SAM, (5) : interpolate point cloud to enhance Anygrasp performance"
    size="full"
 %}
+
+Step 1 - 3 was explained before (**fig4, 5**) Step 4 derives the 3D position from the centroid of back-projected, SAM-masked depth points, computes the dimensions via a PCA-based oriented bounding box, and generates the object contour as the XY-plane convex hull of the masked points. 
 
 ## Research Objectives
 
