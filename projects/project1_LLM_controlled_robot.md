@@ -77,6 +77,8 @@ By combining these techniques, the system executes a wide range of commands — 
 
 ### 1. Perception
 
+### 1.1 Problem definition
+
 For a robot to successfully execute a task, it must accurately determine the position, size, and geometry of target objects. However, existing vision–language models (VLMs) struggle to directly output precise spatial coordinates. Object detection models such as Grounding DINO, although capable of generating bounding boxes and object contours, cannot identify targets purely based on semantic properties (e.g., “objects that look like they might fall”) or by recognizing specialized object names (e.g., “Pocari Sweat”) and often exhibit low accuracy in such cases **(Fig. 2, 3)**. To address these complementary weaknesses, I designed a hybrid perception pipeline that integrates the semantic reasoning ability of VLMs with the spatial accuracy of object detectors and segmentation models.
 
 <div class="media-grid-2">
@@ -86,7 +88,7 @@ For a robot to successfully execute a task, it must accurately determine the pos
   {% include project-media.html type="image" src="snack_failed.png" caption="Fig. 3  Output of Grounding DINO for the query “snack”. The model misclassifies a pen and a black box as snacks, demonstrating the weakness in semantic understanding and category precision." muted=true autoplay=true loop=true%}
 </div>
 
-### Perception - Basic Idea
+### 1.2 Basic Idea
 
 The perception module leverages the complementary strengths of two models: (1) Grounding DINO’s robust bounding box generation, and (2) a vision–language model’s semantic identification ability. To validate this approach, I first generated bounding boxes for all visible objects using Grounding DINO, and then provided each cropped region with a numerical label to the VLM for classification. The use of sequential numerical labels, assigned in the order that bounding boxes were detected, prevents the VLM from being biased or confused by any pre-assigned textual category names.
 
@@ -106,11 +108,27 @@ These results confirm that the proposed combination is effective for semantic ob
    size="full"
 %}
 
-Step 1 - 3 was explained before (**fig4, 5**) Step 4 derives the 3D position from the centroid of back-projected, SAM-masked depth points, computes the dimensions via a PCA-based oriented bounding box, and generates the object contour as the XY-plane convex hull of the masked points. and Step 5 will explained in next section
+Step 1 - 3 was explained before (**fig4, 5**) Step 4 derives the 3D position from the centroid of back-projected, SAM-masked depth points, computes the dimensions via a PCA-based oriented bounding box, and generates the object contour as the XY-plane convex hull of the masked points. Step 5, which involves point-cloud interpolation to enhance AnyGrasp performance, will be detailed in the next section.
 
-### Control
+### 2. Control
 
+### 2.1 Problem Definition
 
+Even with accurate perception, grasp execution is often constrained by:
+
+- **Occlusions**  
+  Single-view depth capture misses object regions hidden from the camera’s line of sight.
+
+- **Point Cloud Quality**  
+  Noisy or incomplete depth data can reduce grasp planning accuracy.
+
+- **Gripper Kinematics**  
+  Many generated grasp poses are physically infeasible due to inverse kinematics (IK) limitations or singularities.
+
+- **AnyGrasp’s Limitation**  
+  Generates grasp candidates across the entire scene, rather than focusing on the intended object, leading to irrelevant or risky grasp attempts.
+
+  
 ## Research Objectives
 
 - **Natural Language Processing**: Implement advanced NLP algorithms to understand human speech and intent
