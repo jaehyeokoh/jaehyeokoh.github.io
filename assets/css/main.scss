@@ -526,3 +526,8 @@ body {
         }
     }
 }
+
+.image-zoom-overlay{position:fixed;inset:0;display:none;justify-content:center;align-items:center;background:rgba(0,0,0,.8);z-index:9999}
+.image-zoom-overlay.open{display:flex}
+.image-zoom-overlay img{max-width:90vw;max-height:90vh;box-shadow:0 10px 30px rgba(0,0,0,.5);border-radius:12px}
+a.zoom img{cursor:zoom-in}

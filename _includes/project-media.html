@@ -21,10 +21,15 @@
 
 <div class="project-media {{ include.type }}{% if include.size %} {{ include.size }}{% endif %}">
   {% if include.type == "image" or include.type == "gif" %}
-    <img src="{{ '/assets/projects/' | append: project_name | append: '/' | append: include.src | relative_url }}" 
-         alt="{{ include.alt | default: include.caption }}"
-         {% if include.width %}width="{{ include.width }}"{% endif %}
-         {% if include.height %}height="{{ include.height }}"{% endif %}>
+    {% assign src_path = '/assets/projects/' | append: project_name | append: '/' | append: include.src | relative_url %}
+    <a href="{{ src_path }}" class="zoom">
+      <img src="{{ src_path }}"
+          alt="{{ include.alt | default: include.caption }}"
+          {% if include.width %}width="{{ include.width }}"{% endif %}
+          {% if include.height %}height="{{ include.height }}"{% endif %}
+          loading="lazy">
+    </a>
+
   
   {% elsif include.type == "video" %}
     <video controls 
@@ -47,10 +52,13 @@
   {% elsif include.type == "gallery" %}
     <div class="image-gallery">
       {% for image in include.images %}
-        <img src="{{ '/assets/projects/' | append: project_name | append: '/' | append: image.src | relative_url }}" 
-             alt="{{ image.alt | default: image.caption }}">
+        {% assign gsrc = '/assets/projects/' | append: project_name | append: '/' | append: image.src | relative_url %}
+        <a href="{{ gsrc }}" class="zoom">
+          <img src="{{ gsrc }}" alt="{{ image.alt | default: image.caption }}" loading="lazy">
+        </a>
       {% endfor %}
     </div>
+
   {% endif %}
   
   {% if include.caption %}
