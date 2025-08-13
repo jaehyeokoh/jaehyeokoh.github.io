@@ -116,14 +116,19 @@ Step 1 - 3 was explained before (**fig4, 5**) Step 4 derives the 3D position fro
 Determining a feasible grasp pose for a robot is a challenging task. Large Language Models (LLMs) cannot directly compute physically valid grasp configurations. In this system, the LLM selects which object to grasp, and delegates the grasp pose generation to AnyGrasp.
 
 However, AnyGrasp’s performance is highly sensitive to missing point cloud data.
-When parts of the object surface are occluded from the camera’s viewpoint, the resulting partial point cloud leads to unstable or incorrect grasp pose generation. As shown in **Fig.  7_(2)**, incomplete geometry causes grasp candidates to be misaligned or placed on irrelevant regions, significantly reducing success rates.
+When parts of the object surface are occluded from the camera’s viewpoint, the resulting partial point cloud leads to unstable or incorrect grasp pose generation. As shown in **Fig.  7_(2)**, incomplete geometry causes grasp candidates to be misaligned or placed on irrelevant regions, leading to frequent grasp failures and significantly reducing success rates.
 
 {% include project-media.html
    type="image"
    src="side_compare.png"
-   caption="Fig. 7  (1) : Original object, (2) : generated point cloud with top-down view (3) : interpolate point cloud to enhance Anygrasp performance"
+   caption="Fig. 7  (1) : Original object, (2) : generated point cloud with top-down view (3) : interpolated point cloud to enhance Anygrasp performance"
    size="large"
 %}
+
+In this project, the robot consistently captures scenes from a top-down viewpoint, which inherently leaves large portions of the object’s side surfaces unobserved.
+To mitigate this limitation, Step 5 of Fig. 6 introduces a simple side point cloud interpolation method: the object’s convex hull contour (in the XY-plane) is extruded vertically to the estimated object height, effectively forming a “wall” of points around the sides.
+This augmentation improves AnyGrasp’s ability to generate stable grasp poses, even when the original sensor data contains significant occlusions.
+
 
 This limitation motivates the development of a side point cloud interpolation strategy to fill in missing object surfaces
 Even with accurate perception, grasp execution is often constrained by:
