@@ -76,11 +76,17 @@ For a robot to successfully execute a task, it must accurately determine the pos
   {% include project-media.html type="image" src="snack_failed.png" caption="Fig. 3  Output of Grounding DINO for the query “snack”. The model misclassifies a pen and a black box as snacks, demonstrating the weakness in semantic understanding and category precision." muted=true autoplay=true loop=true%}
 </div>
 
+### Perception - Basic Idea
+
+The perception module leverages the complementary strengths of two models: (1) Grounding DINO’s robust bounding box generation, and (2) a vision–language model’s semantic identification ability.
+To test this idea, I combined both: first generating bounding boxes with DINO, then letting the VLM classify each detected object.
+As shown in Fig. 4, the VLM correctly assigned semantic labels such as “food” or “non-food” based on appearance and packaging, even for objects that DINO alone would misidentify. This confirms that the proposed combination is effective for semantic object understanding.
+
 
 {% include project-media.html
    type="image"
    src="perception_description.png"
-   caption="Fig2"
+   caption="Fig4"
    size="full"
 %}
 
