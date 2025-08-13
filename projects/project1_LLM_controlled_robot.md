@@ -73,7 +73,7 @@ For a robot to successfully execute a task, it must accurately determine the pos
    type="image"
    src="screw_failed.png"
    caption="Fig. 2 Output of Grounding DINO with the text query “screw”. The model incorrectly detects unrelated objects (e.g., a pen and a can) and assigns low confidence scores to the actual screw. This illustrates its limitations in accurately identifying small or specific items, especially when multiple visually similar objects are present."
-   size="full"
+   size="medium"
 %}
 
 {% include project-media.html
