@@ -55,6 +55,8 @@ Recently, the performance of large language models (LLMs) has been continuously 
    size="medium"
 %}
 
+
+
 ## Introduction
 
 Recent advances in large language models (LLMs) and vision-language models (VLMs) have expanded the potential for natural-language-driven robotic control. Research prototypes such as RT-2 have shown that foundation models can directly interpret visual scenes and map them to robotic actions. However, these systems typically require extensive domain-specific training data and computational resources, which are inaccessible to most users. Furthermore, while VLMs can recognize and describe visual content, they often lack the ability to output precise spatial coordinates, and object detection models like DINO cannot provide rich natural-language descriptions of their detections.
@@ -63,11 +65,20 @@ This project addresses these gaps by demonstrating a fully functional robot cont
 
 By combining these techniques, the system executes a wide range of commands — from simple pick-and-place tasks to multi-step reasoning challenges — illustrating a practical, accessible approach to robot control that leverages the strengths of existing foundation models while mitigating their weaknesses.
 
+## Experimental Setup
+{% include project-media.html
+   type="image"
+   src="environment_setup.jpg"
+   caption="
+    Experimental hardware setup: 6-DoF Indy-7 arm with parallel-jaw gripper and wrist-mounted Intel RealSense D435i, workspace is a wood-colored table, control on an Intel NUC 11, experiments used the GPT API in Python."
+   size="large"
+%}
+
 ## Methods
 
 ### 1. Perception
 
-For a robot to successfully execute a task, it must accurately determine the position, size, and geometry of target objects. However, existing vision–language models (VLMs) struggle to directly output precise spatial coordinates. Object detection models such as Grounding DINO, although capable of generating bounding boxes and object contours, cannot identify targets purely based on semantic properties (e.g., “objects that look like they might fall”) or by recognizing specialized object names (e.g., “Pocari Sweat”) and often exhibit low accuracy in such cases (Fig. 2, 3). To address these complementary weaknesses, I designed a hybrid perception pipeline that integrates the semantic reasoning ability of VLMs with the spatial accuracy of object detectors and segmentation models.
+For a robot to successfully execute a task, it must accurately determine the position, size, and geometry of target objects. However, existing vision–language models (VLMs) struggle to directly output precise spatial coordinates. Object detection models such as Grounding DINO, although capable of generating bounding boxes and object contours, cannot identify targets purely based on semantic properties (e.g., “objects that look like they might fall”) or by recognizing specialized object names (e.g., “Pocari Sweat”) and often exhibit low accuracy in such cases **(Fig. 2, 3)**. To address these complementary weaknesses, I designed a hybrid perception pipeline that integrates the semantic reasoning ability of VLMs with the spatial accuracy of object detectors and segmentation models.
 
 <div class="media-grid-2">
   {% include project-media.html type="image" src="screw_failed.png" caption="Fig. 2  Output of Grounding DINO with the text query “screw”. 
@@ -80,9 +91,9 @@ For a robot to successfully execute a task, it must accurately determine the pos
 
 The perception module leverages the complementary strengths of two models: (1) Grounding DINO’s robust bounding box generation, and (2) a vision–language model’s semantic identification ability. To validate this approach, I first generated bounding boxes for all visible objects using Grounding DINO, and then provided each cropped region to the VLM for classification.
 
-As shown in Fig.4, the VLM correctly assigned semantic labels such as “food” or “non-food” based on appearance and packaging, even in cases where DINO alone would misidentify the target. Fig.5 further demonstrates that the same pipeline can infer physical and contextual properties, such as identifying an object likely to fall from the desk edge, by reasoning over spatial relationships and object placement.
+As shown in **Fig.4**, the VLM correctly assigned semantic labels such as “food” or “non-food” based on appearance and packaging, even in cases where DINO alone would misidentify the target. **Fig.5** further demonstrates that the same pipeline can infer physical and contextual properties, such as identifying an object likely to fall from the desk edge, by reasoning over spatial relationships and object placement.
 
-These results confirm that the proposed combination is effective for semantic object understanding while overcoming the VLM’s weakness in direct coordinate estimation by leveraging precise bounding boxes from DINO. The complete three-step perception pipeline—(1) object detection with Grounding DINO, (2) semantic classification with the VLM, and (3) segmentation and 3D property extraction using SAM—is illustrated in Fig.6.
+These results confirm that the proposed combination is effective for semantic object understanding while overcoming the VLM’s weakness in direct coordinate estimation by leveraging precise bounding boxes from DINO. The complete three-step perception pipeline is illustrated in **Fig.6.** - (1) object detection with Grounding DINO, (2) semantic classification with the VLM, and (3) segmentation and 3D property extraction using SAM 
 
 <div class="media-grid-2">
   {% include project-media.html type="image" src="perception_description.png" caption="Fig. 4" muted=true autoplay=true loop=true%}
