@@ -108,7 +108,7 @@ These results confirm that the proposed combination is effective for semantic ob
    size="full"
 %}
 
-Step 1 - 3 was explained before (**fig4, 5**) Step 4 derives the 3D position from the centroid of back-projected, SAM-masked depth points, computes the dimensions via a PCA-based oriented bounding box, and generates the object contour as the XY-plane convex hull of the masked points. Step 5, which involves point-cloud interpolation to enhance AnyGrasp performance, will be detailed in the Control section.
+Step 1 - 3 was explained before (**Fig4, 5**) Step 4 derives the 3D position from the centroid of back-projected, SAM-masked depth points, computes the dimensions via a PCA-based oriented bounding box, and generates the object contour as the XY-plane convex hull of the masked points. Step 5, which involves point-cloud interpolation to enhance AnyGrasp performance, will be detailed in the Control section.
 
 ## 2. Control
 
