@@ -75,7 +75,7 @@ By combining these techniques, the system executes a wide range of commands — 
 
 ## Methods
 
-### 1. Perception
+## 1. Perception
 
 ### 1.1 Problem definition
 
@@ -110,7 +110,7 @@ These results confirm that the proposed combination is effective for semantic ob
 
 Step 1 - 3 was explained before (**fig4, 5**) Step 4 derives the 3D position from the centroid of back-projected, SAM-masked depth points, computes the dimensions via a PCA-based oriented bounding box, and generates the object contour as the XY-plane convex hull of the masked points. Step 5, which involves point-cloud interpolation to enhance AnyGrasp performance, will be detailed in the Control section.
 
-### 2. Control
+## 2. Control
 
 ### 2.1 Problem Definition
 Determining a feasible grasp pose for a robot is a challenging task. Large Language Models (LLMs) cannot directly compute physically valid grasp configurations. In this system, the LLM selects which object to grasp, and delegates the grasp pose generation to AnyGrasp.
