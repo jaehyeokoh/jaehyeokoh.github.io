@@ -84,14 +84,14 @@ As shown in Fig. 4, the VLM correctly assigned semantic labels such as â€œfoodâ€
 
 
 <div class="media-grid-2">
-  {% include project-media.html type="image" src="perception_description.png" caption="input : Fig. 4"}
-  {% include project-media.html type="image" src="might fall from table.jpg" caption="Fig. 5" }
+  {% include project-media.html type="image" src="perception_description.png" caption="Fig. 4"}
+  {% include project-media.html type="image" src="might_fall_from_table.jpg" caption="Fig. 5" }
 </div>
 
 {% include project-media.html
    type="image"
    src="perception_map.png"
-   caption="Fig3"
+   caption="Fig. 6"
    size="full"
 %}
 
