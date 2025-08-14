@@ -154,6 +154,24 @@ To address this, we applied an inverse kinematics (IK) check to all grasp candid
 
 ## Planning
 
+### Approach
+
+To control a robot with an LLM, the system must analyze the user goal, plan a sequence of actions, select the correct objects, and output a parseable, precise, and robust action plan. Long-context studies show that accuracy drops when key information is placed in the middle of a long input  [[1]](https://arxiv.org/pdf/2307.03172). They also report that making inputs longer can reduce reasoning quality[[2]](https://aclanthology.org/2024.acl-long.818.pdf), In addition, language models often show an attention sink toward the first tokens, pulling focus away from later content[[3]](https://arxiv.org/pdf/2410.10781v1) In a single mixed prompt for robot planning (goal parsing, object selection, action synthesis in one place), these effects can dilute attention and reduce plan reliability.
+Therefore, we split planning into small prompts, one role per prompt, so each agent sees only the minimal context it needs.
+This choice is consistent with prior work showing that modular & agentic prompting improves planning and complex reasoning compared to one big prompt.[[4]](https://arxiv.org/pdf/2503.12483)[[5]](https://arxiv.org/pdf/2310.00194)
+
+
+LLMs have a fixed context window, and self-attention has quadratic time/memory cost with input length, so a single long prompt is hard to process effectively.
+arXiv+1
+Proceedings of Machine Learning Research
+
+In practice, model quality drops as inputs get longer: models often miss information in the middle of long contexts (“Lost in the Middle”), and even extra padding tokens can hurt reasoning (“Same Task, More Tokens”).
+arXiv+1
+ACL Anthology+1
+
+Therefore, we split planning into small, role-specific prompts so each agent sees only the minimal information it needs. (이 문장은 제가 추정한 겁니다.)
+This choice is consistent with prior work showing that modular/agentic prompting can improve planning and complex reasoning compared to one big prompt.
+
 Research paper in preparation for submission to ICRA 2025 [[1]](https://arxiv.org/pdf/2406.13642v1)
 
 Research paper in preparation for submission to ICRA 2025 <a href="https://arxiv.org/pdf/2406.13642v1" target="_blank">[1]</a>
