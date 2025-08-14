@@ -150,7 +150,7 @@ This augmentation improves AnyGrasp’s ability to generate stable grasp poses u
 For efficiency, We associated each object’s side point cloud with its ID and map it to world coordinates using the TCP pose recorded at capture. We stored these clouds and update their poses whenever objects move, which minimizes DINO+SAM calls and subsequent cycles reuse the cached clouds for non-target objects. At grasp time, first make a 2D box from the cached side point cloud. run DINO to get candidate boxes, choose the one closest to the side contour, and then run SAM on that area. We then compute the target’s 3D pose and update its side point cloud. Other objects keep using their cached clouds.
 
 Another critical issue arises because AnyGrasp does not account for the robot’s kinematic constraints, which often results in singular configurations.
-To address this, we applied an inverse kinematics (IK) check to all grasp candidates, iterating through them in descending order of their grasp score until a feasible pose was found.
+To address this, we applied an inverse kinematics (IK) check to all grasp candidates, iterating through them in descending order of their grasp score until a valid pose was found.
 
 ## Planning
 
