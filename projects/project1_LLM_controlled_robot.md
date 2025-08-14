@@ -113,7 +113,7 @@ Step 1 - 3 was explained before (**Fig4, 5**) Step 4 derives the position x,y fr
 ## 2. Grasp pose
 
 ### 2.1 Problem Definition (Point cloud)
-Determining a valid grasp pose for a robot is a challenging task. Large Language Models (LLMs) cannot directly compute physically valid grasp poses. In this system, the LLM selects which object to grasp, and delegates the grasp pose generation to <a href="https://arxiv.org/abs/2212.08333" target="_blank">AnyGrasp</a>.
+Determining a valid grasp pose for a robot is a challenging task. Large Language Models (LLMs) cannot directly compute physically valid grasp poses. In this system, the LLM selects which object to grasp, and delegates the grasp pose generation to AnyGrasp.
 
 However, AnyGrasp’s performance is highly sensitive to occlusion of the object surface in the point cloud.
 When the lateral surfaces of the object are not captured from the camera’s viewpoint, the resulting partial point cloud often causes AnyGrasp to generate collision-prone grasp poses, as illustrated in  **Fig.  7**.
