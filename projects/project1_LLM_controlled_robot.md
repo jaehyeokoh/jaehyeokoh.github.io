@@ -118,7 +118,7 @@ Determining a feasible grasp pose for a robot is a challenging task. Large Langu
 However, AnyGrasp’s performance is highly sensitive to occlusion of the object surface in the point cloud.
 When parts of the object surface are occluded from the camera’s viewpoint, the resulting partial point cloud leads to unstable or incorrect grasp pose generation. As shown in **Fig.  7_(2)**, incomplete geometry causes grasp candidates to be misaligned or placed on irrelevant regions, leading to frequent grasp failures and significantly reducing success rates.
 
-Furthermore, valid grasp poses must avoid potential collisions. Without side-view point cloud data, AnyGrasp lacks awareness of the object’s lateral boundaries and may generate poses that intersect the object’s volume, as illustrated in **Fig. 8**.
+Furthermore, valid grasp poses must avoid potential collisions. However, without side-view point cloud data, AnyGrasp lacks awareness of the object’s lateral boundaries and may generate poses that intersect the object, as illustrated in **Fig. 8**.
 This makes side point cloud interpolation a critical step in ensuring reliable grasp generation.
 
 {% include project-media.html
