@@ -142,13 +142,12 @@ This augmentation improves AnyGrasp’s ability to generate stable grasp poses u
    size="full"
 %}
 
-For efficiency, I linked each object’s side point cloud to its object ID and transform it to world coordinates by applying the TCP pose at capture time.saving these clouds and update their poses whenever the objects move. This let program run DINO+SAM only once at the start and later cycles reuse the saved clouds for non-target objects, cutting compute and speeding up the system.
-
-
 <div class="media-grid-2">
   {% include project-media.html type="image" src="improved_side_grasp.jpg" caption="Fig. 10  Side grasp capability improved by side point cloud interpolation." muted=true autoplay=true loop=true%}
   {% include project-media.html type="image" src="collision_detect.jpg" caption=" Fig. 11  Collision detection driven by the interpolated side point cloud" muted=true autoplay=true loop=true%}
 </div>
+
+For efficiency, We associated each object’s side point cloud with its ID and map it to world coordinates using the TCP pose recorded at capture. We stored these clouds and update their poses whenever objects move, which minimizes DINO+SAM calls and subsequent cycles reuse the cached clouds for non-target objects. At grasp time, first make a 2D box from the cached side point cloud. run DINO to get candidate boxes, choose the one closest to the side contour, and then run SAM on that area. We then compute the target’s 3D pose and update its side point cloud. Other objects keep using their cached clouds.
 
 ### Singular problem Approach
 
