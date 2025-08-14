@@ -105,7 +105,7 @@ These results confirm that the proposed combination is effective for semantic ob
    type="image"
    src="perception_map.png"
    caption="Fig. 6  (1) : object detection with Grounding DINO, (2) : semantic classification with the VLM, (3) : segmentation from bounding boxes using SAM, (4) : describe the method of extracting 3d properties from masked point cloud"
-   size="full"
+   size="large"
 %}
 
 Step 1 - 3 was explained before (**Fig4, 5**) Step 4 derives the position x,y from the centroid of back-projected masked depth points, z is defined as the z-extent (max–min), and the dimensions (L, W) are computed via PCA on the masked point cloud.
@@ -139,7 +139,7 @@ This augmentation improves AnyGrasp’s ability to generate stable grasp poses u
    type="image"
    src="side_interpola_des.png"
    caption="Fig. 9   Diagram of the side point-cloud interpolation process"
-   size="full"
+   size="large"
 %}
 
 <div class="media-grid-2">
