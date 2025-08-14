@@ -156,6 +156,8 @@ To address this, we applied an inverse kinematics (IK) check to all grasp candid
 
 Research paper in preparation for submission to ICRA 2025 [[1]](https://arxiv.org/pdf/2406.13642v1)
 
+Research paper in preparation for submission to ICRA 2025 <a href="https://arxiv.org/pdf/2406.13642v1" target="_blank">[1]</a>
+
 
 ## Future Work
 
