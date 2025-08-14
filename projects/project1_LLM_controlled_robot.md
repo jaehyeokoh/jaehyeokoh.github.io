@@ -116,7 +116,7 @@ Step 1 - 3 was explained before (**Fig4, 5**) Step 4 derives the position x,y fr
 Determining a valid grasp pose for a robot is a challenging task. Large Language Models (LLMs) cannot directly compute physically valid grasp poses. In this system, the LLM selects which object to grasp, and delegates the grasp pose generation to AnyGrasp.
 
 However, AnyGrasp’s performance is highly sensitive to occlusion of the object surface in the point cloud.
-When the lateral surfaces of the object are not captured from the camera’s viewpoint, the resulting partial point cloud often causes AnyGrasp to generate collision-prone grasp poses, as illustrated in  **Fig.  7**.
+When lateral surfaces of the object are not captured from the camera’s viewpoint, the resulting partial point cloud often causes AnyGrasp to generate collision-prone grasp poses, as illustrated in  **Fig.  7**.
 
 Additionally, the absence of side-view data limits the robot’s ability to plan side grasps. Without a complete representation of the object’s lateral boundaries, AnyGrasp may fail to propose valid side approaches, as shown in **Fig. 8**.
 This makes side point cloud interpolation a critical step for ensuring both collision-free and expanding the range of valid grasp poses.
@@ -156,20 +156,11 @@ To address this, we applied an inverse kinematics (IK) check to all grasp candid
 
 ### Approach
 
-To control a robot with an LLM, the system must analyze the user input, plan a sequence of actions, select the correct objects, and output a parsable, precise, and robust action plan. Long-context studies show that accuracy drops when key information is placed in the middle of a long input <a href="https://arxiv.org/pdf/2307.03172" target="_blank">[1]</a>. They also report that making inputs longer can reduce reasoning quality<a href="https://aclanthology.org/2024.acl-long.818.pdf" target="_blank">[2]</a>, In addition, language models often show an attention sink toward the first tokens, pulling focus away from later content<a href="https://arxiv.org/pdf/2410.10781v1" target="_blank">[3]</a>, These studies suggest that, in a single mixed prompt for robot planning (user input parsing, object selection, and action planning in one place), attention may become diluted and plan reliability may decrease. Therefore, we split planning into small, role-specific prompts so each agent sees only the minimal context it needs. This design is consistent with prior work showing that modular or agentic prompting improves planning and complex reasoning compared to one big prompt<a href="https://arxiv.org/pdf/2503.12483" target="_blank">[4]</a>,<a href="https://arxiv.org/pdf/2310.00194" target="_blank">[5]</a>.
+To control a robot with an LLM, the system must analyze the user input, plan a sequence of actions, select the correct objects, and output a parsable, precise, and robust action plan. Long-context studies show that accuracy drops when key information is placed in the middle of a long input <a href="https://arxiv.org/pdf/2307.03172" target="_blank">[1]</a>. They also report that making inputs longer can reduce reasoning quality<a href="https://aclanthology.org/2024.acl-long.818.pdf" target="_blank">[2]</a>, In addition, language models often show an attention sink toward the first tokens, pulling focus away from later content<a href="https://arxiv.org/pdf/2410.10781v1" target="_blank">[3]</a>, These studies suggest that, in a single mixed prompt for robot planning (user input parsing, object selection, and action planning in one prompt), attention may become diluted and plan reliability may decrease. Therefore, we split planning into small, role-specific prompts so each agent sees only the minimal context it needs. This design is consistent with prior work showing that modular or agentic prompting improves planning and complex reasoning compared to one big prompt<a href="https://arxiv.org/pdf/2503.12483" target="_blank">[4]</a><a href="https://arxiv.org/pdf/2310.00194" target="_blank">[5]</a>.
 
-LLMs have a fixed context window, and self-attention has quadratic time/memory cost with input length, so a single long prompt is hard to process effectively.
-arXiv+1
-Proceedings of Machine Learning Research
 
-In practice, model quality drops as inputs get longer: models often miss information in the middle of long contexts (“Lost in the Middle”), and even extra padding tokens can hurt reasoning (“Same Task, More Tokens”).
-arXiv+1
-ACL Anthology+1
 
-Therefore, we split planning into small, role-specific prompts so each agent sees only the minimal information it needs. (이 문장은 제가 추정한 겁니다.)
-This choice is consistent with prior work showing that modular/agentic prompting can improve planning and complex reasoning compared to one big prompt.
 
-Research paper in preparation for submission to ICRA 2025 [[1]](https://arxiv.org/pdf/2406.13642v1)
 
 Research paper in preparation for submission to ICRA 2025 <a href="https://arxiv.org/pdf/2406.13642v1" target="_blank">[1]</a>
 
