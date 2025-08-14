@@ -130,8 +130,8 @@ This makes side point cloud interpolation a critical step for ensuring both coll
 
 ### 2.2 Side point cloud interpolation
 
-In this project, the robot captures scenes from a top-down viewpoint, which leaves large portions of the object’s side surfaces unobserved.
-To address this limitation, Fig. 9 introduces a simple side point cloud interpolation method: the object’s convex hull contour (in the XY-plane) is extruded vertically to the estimated object height, effectively forming a “wall” of points around the sides.
+In this project, The robot observes scenes from a top-down viewpoint, leaving most side surfaces unobserved.
+To address this limitation, **Fig. 9** introduces a simple side point cloud interpolation method: first, conduct cluster with DBSCAN, and select the largest-volume cluster, then I extruded the object’s convex hull contour (in the XY-plane) vertically to the estimated object height, effectively forming a “wall” of points around the sides.
 This augmentation improves AnyGrasp’s ability to generate stable grasp poses under partial occlusions.
 
 {% include project-media.html
