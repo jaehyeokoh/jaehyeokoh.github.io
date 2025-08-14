@@ -31,24 +31,24 @@ Recently, the performance of large language models (LLMs) has been continuously 
 ## Demo video (2× Speed, user input shown below)
 
 <div class="media-grid-2">
-  {% include project-media.html type="video" src="neuro1.mp4" caption="input : 흰 박스를 제외한 나머지 물건들을 작은 것부터 순서대로 하나는 흰 박스 앞에, 하나는 흰 박스 위에, 하나는 흰 박스 뒤쪽에 놔줘" muted=true autoplay=true loop=true%}
-  {% include project-media.html type="video" src="neuro_beverage.mp4" caption="input : 먹을 수 있는 건 흰 박스 앞에, 먹을 수 없는 건 흰 박스 뒤에 놔" muted=true autoplay=true loop=true%}
+  {% include project-media.html type="video" src="neuro1.mp4" caption="Human input : 흰 박스를 제외한 나머지 물건들을 작은 것부터 순서대로 하나는 흰 박스 앞에, 하나는 흰 박스 위에, 하나는 흰 박스 뒤쪽에 놔줘" muted=true autoplay=true loop=true%}
+  {% include project-media.html type="video" src="neuro_beverage.mp4" caption="Human input : 먹을 수 있는 건 흰 박스 앞에, 먹을 수 없는 건 흰 박스 뒤에 놔" muted=true autoplay=true loop=true%}
 </div>
 
 <div class="media-grid-2">
-  {% include project-media.html type="video" src="falling_obj_catch.mp4" caption="input : 곧 떨어질 것 같은 물건을 잡아" muted=true autoplay=true loop=true%}
-  {% include project-media.html type="video" src="food_name.mp4" caption="input : 포카리 스웨트를 후레쉬 베리 위에 올려" muted=true autoplay=true loop=true%}
+  {% include project-media.html type="video" src="falling_obj_catch.mp4" caption="Human input : 곧 떨어질 것 같은 물건을 잡아" muted=true autoplay=true loop=true%}
+  {% include project-media.html type="video" src="food_name.mp4" caption="Human input : 포카리 스웨트를 후레쉬 베리 위에 올려" muted=true autoplay=true loop=true%}
 </div>
 
 <div class="media-grid-2">
-  {% include project-media.html type="video" src="proper_crate.mp4" caption="input : 음료수를 적절한 상자에 놔" muted=true autoplay=true loop=true%}
-  {% include project-media.html type="video" src="food_crate.mp4" caption="input : 음료수를 음식 상자에 놔" muted=true autoplay=true loop=true%}
+  {% include project-media.html type="video" src="proper_crate.mp4" caption="Human input : 음료수를 적절한 상자에 놔" muted=true autoplay=true loop=true%}
+  {% include project-media.html type="video" src="food_crate.mp4" caption="Human input : 음료수를 음식 상자에 놔" muted=true autoplay=true loop=true%}
 </div>
 
 {% include project-media.html
    type="video"
    src="complex_input.mp4"
-   caption="input : 나 목마르니 적절한 물건을 흰 상자 위에 올려 그리고 나머지 물건들을 큰것 부터 하나는 흰 상자 오른쪽에 하나는 흰 상자 앞에 놔"
+   caption="Human input : 나 목마르니 적절한 물건을 흰 상자 위에 올려 그리고 나머지 물건들을 큰것 부터 하나는 흰 상자 오른쪽에 하나는 흰 상자 앞에 놔"
    autoplay=true
    muted=true
    loop=true
@@ -122,8 +122,8 @@ Furthermore, valid grasp poses must avoid potential collisions. However, without
 This makes side point cloud interpolation a critical step in ensuring reliable grasp generation.
 
 <div class="media-grid-2">
-  {% include project-media.html type="image" src="collision_trigger.png" caption="Fig. 4  Illustration of the VLM’s ability to semantically classify detected objects based on appearance and context." muted=true autoplay=true loop=true%}
-  {% include project-media.html type="image" src="lack_of_side_grasp.png" caption=" Fig. 5  Illustration of the system’s capability to infer environmental context, such as identifying objects likely to fall from the desk." muted=true autoplay=true loop=true%}
+  {% include project-media.html type="image" src="collision_trigger.png" caption="Fig. 7  Illustration of the VLM’s ability to semantically classify detected objects based on appearance and context." muted=true autoplay=true loop=true%}
+  {% include project-media.html type="image" src="lack_of_side_grasp.png" caption=" Fig. 8  Illustration of the system’s capability to infer environmental context, such as identifying objects likely to fall from the desk." muted=true autoplay=true loop=true%}
 </div>
 
 <!-- {% include project-media.html
