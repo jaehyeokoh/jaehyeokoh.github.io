@@ -116,17 +116,22 @@ Step 1 - 3 was explained before (**Fig4, 5**) Step 4 derives the position x,y fr
 Determining a feasible grasp pose for a robot is a challenging task. Large Language Models (LLMs) cannot directly compute physically valid grasp poses. In this system, the LLM selects which object to grasp, and delegates the grasp pose generation to AnyGrasp.
 
 However, AnyGrasp’s performance is highly sensitive to occlusion of the object surface in the point cloud.
-When parts of the object surface are occluded from the camera’s viewpoint, the resulting partial point cloud leads to unstable or incorrect grasp pose generation. As shown in **Fig.  7_(2)**, incomplete geometry causes grasp candidates to be misaligned or placed on irrelevant regions, leading to frequent grasp failures and significantly reducing success rates.
+When parts of the object surface are occluded from the camera’s viewpoint, the resulting partial point cloud leads to unstable or incorrect grasp pose generation. As shown in **Fig.  7**, incomplete geometry causes grasp candidates to be misaligned or placed on irrelevant regions, leading to frequent grasp failures and significantly reducing success rates.
 
 Furthermore, valid grasp poses must avoid potential collisions. However, without side-view point cloud data, AnyGrasp lacks awareness of the object’s lateral boundaries and may generate poses that intersect the object, as illustrated in **Fig. 8**.
 This makes side point cloud interpolation a critical step in ensuring reliable grasp generation.
 
-{% include project-media.html
+<div class="media-grid-2">
+  {% include project-media.html type="image" src="collision_trigger.png" caption="Fig. 4  Illustration of the VLM’s ability to semantically classify detected objects based on appearance and context." muted=true autoplay=true loop=true%}
+  {% include project-media.html type="image" src="lack_of_side_grasp.png" caption=" Fig. 5  Illustration of the system’s capability to infer environmental context, such as identifying objects likely to fall from the desk." muted=true autoplay=true loop=true%}
+</div>
+
+<!-- {% include project-media.html
    type="image"
    src="side_compare.png"
    caption="Fig. 7  (1) : Original object, (2) : Generated point cloud with top-down view (3) : interpolated point cloud to enhance Anygrasp performance"
    size="large"
-%}
+%} -->
 
 
 ### 2.2 
