@@ -112,7 +112,7 @@ Step 1 - 3 was explained before (**Fig4, 5**) Step 4 derives the position x,y fr
 
 ## 2. Control
 
-### 2.1 Problem Definition
+### 2.1 Problem Definition (Point cloud)
 Determining a valid grasp pose for a robot is a challenging task. Large Language Models (LLMs) cannot directly compute physically valid grasp poses. In this system, the LLM selects which object to grasp, and delegates the grasp pose generation to AnyGrasp.
 
 However, AnyGrasp’s performance is highly sensitive to occlusion of the object surface in the point cloud.
@@ -126,20 +126,20 @@ This makes side point cloud interpolation a critical step for ensuring both coll
   {% include project-media.html type="image" src="lack_of_side_grasp.png" caption=" Fig. 8  Example showing how missing side point cloud data limits side grasp capability for the object" muted=true autoplay=true loop=true%}
 </div>
 
-<!-- {% include project-media.html
-   type="image"
-   src="side_compare.png"
-   caption="Fig. 7  (1) : Original object, (2) : Generated point cloud with top-down view (3) : interpolated point cloud to enhance Anygrasp performance"
-   size="large"
-%} -->
 
 
-### 2.2 
+### 2.2 Side point cloud interpolation
 
 In this project, the robot captures scenes from a top-down viewpoint, which leaves large portions of the object’s side surfaces unobserved.
-To address this limitation, Step 5 of Fig. 6 introduces a simple side point cloud interpolation method: the object’s convex hull contour (in the XY-plane) is extruded vertically to the estimated object height, effectively forming a “wall” of points around the sides.
+To address this limitation, Fig. 9 introduces a simple side point cloud interpolation method: the object’s convex hull contour (in the XY-plane) is extruded vertically to the estimated object height, effectively forming a “wall” of points around the sides.
 This augmentation improves AnyGrasp’s ability to generate stable grasp poses under partial occlusions.
 
+{% include project-media.html
+   type="image"
+   src="side_interpol_des.png"
+   caption="Fig. 9  Diagram of the side point-cloud interpolation process"
+   size="large"
+%}
 
 
 
