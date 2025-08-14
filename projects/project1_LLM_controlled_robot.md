@@ -138,7 +138,7 @@ This augmentation improves AnyGrasp’s ability to generate stable grasp poses u
    type="image"
    src="side_interpol_des.png"
    caption="Fig. 9  Diagram of the side point-cloud interpolation process"
-   size="large"
+   size="full"
 %}
 
 
