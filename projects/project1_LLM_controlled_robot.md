@@ -134,6 +134,8 @@ In this project, The robot observes scenes from a top-down viewpoint, leaving mo
 To address this limitation, **Fig. 9** introduces a simple side point cloud interpolation method: first, conduct cluster with DBSCAN, and select the largest-volume cluster, then I extruded the object’s convex hull contour (in the XY-plane) vertically to the estimated object height, effectively forming a “wall” of points around the sides.
 This augmentation improves AnyGrasp’s ability to generate stable grasp poses under partial occlusions as shown in **Fig. 10 and 11**.
 
+For efficiency, I linked each object’s side point cloud to its object ID and transform it to world coordinates by applying the TCP pose at capture time.saving these clouds and update their poses whenever the objects move. This let the program run DINO+SAM only once at the start and later cycles reuse the saved clouds for non-target objects, cutting compute and speeding up the system.
+
 {% include project-media.html
    type="image"
    src="side_interpol_des.png"
@@ -145,6 +147,9 @@ This augmentation improves AnyGrasp’s ability to generate stable grasp poses u
   {% include project-media.html type="image" src="improved_side_grasp.jpg" caption="Fig. 10  Side grasp capability improved by side point cloud interpolation." muted=true autoplay=true loop=true%}
   {% include project-media.html type="image" src="collision_detect.jpg" caption=" Fig. 11  Collision detection driven by the interpolated side point cloud" muted=true autoplay=true loop=true%}
 </div>
+
+### Singular problem Approach
+
 
 
 ## Future Work
