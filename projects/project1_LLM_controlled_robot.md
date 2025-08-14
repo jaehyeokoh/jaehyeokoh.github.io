@@ -104,11 +104,11 @@ These results confirm that the proposed combination is effective for semantic ob
 {% include project-media.html
    type="image"
    src="perception_map.png"
-   caption="Fig. 6  (1) : object detection with Grounding DINO, (2) : semantic classification with the VLM, (3, 4) : segmentation and 3D property extraction from bounding boxes using SAM, (5) : interpolate point cloud to enhance Anygrasp performance"
+   caption="Fig. 6  (1) : object detection with Grounding DINO, (2) : semantic classification with the VLM, (3) : segmentation from bounding boxes using SAM, (4) : describe the method of extracting 3d properties from masked point cloud"
    size="full"
 %}
 
-Step 1 - 3 was explained before (**Fig4, 5**) Step 4 derives the 3D position from the centroid of back-projected, SAM-masked depth points, computes the dimensions via a PCA-based oriented bounding box, and generates the object contour as the XY-plane convex hull of the masked points. Step 5, which involves point-cloud interpolation to enhance AnyGrasp performance, will be detailed in the Control section.
+Step 1 - 3 was explained before (**Fig4, 5**) Step 4 derives the position x,y from the centroid of back-projected masked depth points, z is defined as the z-extent (max–min), and the dimensions (L, W) are computed via PCA on the masked point cloud.
 
 ## 2. Control
 
