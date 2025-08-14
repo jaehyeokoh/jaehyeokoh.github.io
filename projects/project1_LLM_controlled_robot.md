@@ -110,7 +110,7 @@ These results confirm that the proposed combination is effective for semantic ob
 
 Step 1 - 3 was explained before (**Fig4, 5**) Step 4 derives the position x,y from the centroid of back-projected masked depth points, z is defined as the z-extent (max–min), and the dimensions (L, W) are computed via PCA on the masked point cloud.
 
-## 2. Control
+## 2. Grasp pose
 
 ### 2.1 Problem Definition (Point cloud)
 Determining a valid grasp pose for a robot is a challenging task. Large Language Models (LLMs) cannot directly compute physically valid grasp poses. In this system, the LLM selects which object to grasp, and delegates the grasp pose generation to AnyGrasp.
