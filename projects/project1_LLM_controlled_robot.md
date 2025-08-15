@@ -187,11 +187,6 @@ To avoid overloading the LLM, we split the user input into individual tasks and 
 
 But some tasks, such as assembly or complex trajectory generation, are still difficult to handle with a general prompt. To address this, we made two types of agents: a simple agent and a hard agent. The simple agent handles straightforward tasks that can be completed with basic pick-and-place operations, while the hard agent handles tasks that need additional reasoning and task-specific prompt guidelines. The hard agent analyzes the user input and routes it to specialized agents equipped with these tailored prompts. As shown in **Fig. 13**, for example, the assembly-specialized prompt and its LLM output demonstrate how complex tasks can be solved in a modular, step-by-step way.
 
-
-
-Research paper in preparation for submission to ICRA 2025 <a href="https://arxiv.org/pdf/2406.13642v1" target="_blank">[1]</a>
-
-
 ## Future Work
 
 - Integration with physical robot platform
