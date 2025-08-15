@@ -167,6 +167,13 @@ For efficiency, We associated each object’s side point cloud with its ID and m
 Another critical issue is AnyGrasp does not account for the robot’s kinematic constraints, which often results in singular configurations.
 To address this, we applied an inverse kinematics (IK) check to all grasp candidates, iterating through them in descending order of their grasp score until a valid pose was found.
 
+And we made a simple collision avoidance method for movement by analyzing the current pose, target pose, and any objects in between (see video below).
+
+<div class="media-grid-2">
+  {% include project-media.html type="video" src="colli_low.mp4" caption="collision avoidance not activated" muted=true autoplay=true loop=true%}
+  {% include project-media.html type="video" src="colli_high.mp4" caption="collosion avoidance activated" muted=true autoplay=true loop=true%}
+</div>
+
 ## Planning
 
 ### Approach
