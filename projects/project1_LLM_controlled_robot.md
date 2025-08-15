@@ -183,11 +183,11 @@ To control a robot with an LLM, the system must analyze the user input, plan a s
 {% include project-media.html
    type="image"
    src="task_decomposition.jpg"
-   caption="Fig. 10   Diagram of multi moduled pipeline"
+   caption="Fig. 12   Diagram of multi moduled pipeline"
    size="large"
 %}
 
-
+To avoid llm takes many task, we seperated the 전체 과정. We found out (시행착오방법으로) that to trasnform user input to plan for robot, we have to define the object to use in task, the action sequence that is 구성되어있는 by robot available movement (move, grip, release), and analyse the user's 모호한 input and 명확히 하는 작업. so we seperated the jobs to proper agents with proper prompts. as shown in fig 10. 
 
 Research paper in preparation for submission to ICRA 2025 <a href="https://arxiv.org/pdf/2406.13642v1" target="_blank">[1]</a>
 
