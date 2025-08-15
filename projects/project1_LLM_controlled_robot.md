@@ -173,7 +173,12 @@ To address this, we applied an inverse kinematics (IK) check to all grasp candid
 
 To control a robot with an LLM, the system must analyze the user input, plan a sequence of actions, select the correct objects, and output a parsable, precise, and robust action plan. Long-context studies show that accuracy drops when key information is placed in the middle of a long input <a href="https://arxiv.org/pdf/2307.03172" target="_blank">[1]</a>. They also report that making inputs longer can reduce reasoning quality<a href="https://aclanthology.org/2024.acl-long.818.pdf" target="_blank">[2]</a>, In addition, language models often show an attention sink toward the first tokens, pulling focus away from later content<a href="https://arxiv.org/pdf/2410.10781v1" target="_blank">[3]</a>, These studies suggest that, in a single mixed prompt for robot planning (user input parsing, object selection, and action planning in one prompt), attention may become diluted and plan reliability may decrease. Therefore, we split planning into small, role-specific prompts so each agent sees only the minimal context it needs. This design is consistent with prior work showing that modular or agentic prompting improves planning and complex reasoning compared to one big prompt<a href="https://arxiv.org/pdf/2503.12483" target="_blank">[4]</a><a href="https://arxiv.org/pdf/2310.00194" target="_blank">[5]</a>.
 
-
+{% include project-media.html
+   type="image"
+   src="task_decomposition.jpg"
+   caption="Fig. 10   Diagram of multi moduled pipeline"
+   size="large"
+%}
 
 
 
