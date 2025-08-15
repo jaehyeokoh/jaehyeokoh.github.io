@@ -189,7 +189,6 @@ But some tasks, such as assembly or complex trajectory generation, are still dif
 
 ## Future Work
 
-- Integration with physical robot platform
-- Extensive user testing and feedback collection
-- Publication of research findings
-- Open-source release of core modules
+- Integration with Imitation learned action module
+- make llm to find proper sight
+- 
