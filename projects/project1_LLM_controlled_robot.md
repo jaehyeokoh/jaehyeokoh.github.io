@@ -6,8 +6,8 @@ tech_stack: "Python, LLM, Vision"
 status: "Ongoing"
 permalink: /projects/project1_LLM_controlled_robot/
 links:
-  - name: "GitHub"
-    url: "https://github.com/jaehyeokoh/human-robot-communication"
+  - name: "GitHub(comming soon)"
+    url: ""
 #   - name: "Paper"
 #     url: "#"
 #   - name: "Demo"
