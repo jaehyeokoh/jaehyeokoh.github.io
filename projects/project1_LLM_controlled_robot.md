@@ -193,7 +193,3 @@ But some tasks, such as assembly or complex trajectory generation, are still dif
 - Extensive user testing and feedback collection
 - Publication of research findings
 - Open-source release of core modules
-
-## Related Publications
-
-*Research paper in preparation for submission to ICRA 2025* -->
