@@ -180,14 +180,15 @@ And we made a simple collision avoidance method for movement by analyzing the cu
 
 To control a robot with an LLM, the system must parse the user input, plan an ordered sequence of actions, select the correct objects, and output a machine-parsable, precise, and robust action plan. there are studies show that accuracy drops when key information is placed in the middle of a long input <a href="https://arxiv.org/pdf/2307.03172" target="_blank">[1]</a>. They also report that simply increasing input length can reduce reasoning quality <a href="https://aclanthology.org/2024.acl-long.818.pdf" target="_blank">[2]</a>. In addition, language models often exhibit an attention sink toward the first tokens, pulling focus away from later content <a href="https://arxiv.org/pdf/2410.10781v1" target="_blank">[3]</a>. These studies suggest that, in a single mixed prompt for robot planning (instruction parsing, object selection, and action planning in one place), attention may become diluted and plan reliability may decrease. Therefore, we split planning into small, role-specific prompts so each agent sees only the minimal context it needs. This design is consistent with prior work showing that modular or agentic prompting improves planning and complex reasoning compared to one big prompt <a href="https://arxiv.org/pdf/2503.12483" target="_blank">[4]</a><a href="https://arxiv.org/pdf/2310.00194" target="_blank">[5]</a>.
 
-{% include project-media.html
-type="image"
-src="task_decomposition.jpg"
-caption="Fig. 12. Modular planning pipeline."
-size="large"
-%}
+<div class="media-grid-2">
+  {% include project-media.html type="image" src="task_decomposition.jpg" caption="Fig. 12. Modular planning pipeline." muted=true autoplay=true loop=true%}
+  {% include project-media.html type="image" src="assembly_specialized.jpg" caption="Fig. 13. Illustration of the output from each moduled prompt of the assembly agent" muted=true autoplay=true loop=true%}
+</div>
 
-To avoid making the LLM handle too many tasks at once, we split the pipeline into small steps. First, we parse the user instruction to find the goal, constraints, and object cues, and we fix obvious ambiguities. Then we build the robot plan by (1) resolving any remaining ambiguity, (2) selecting the task-relevant objects, and (3) composing an action sequence from robot primitives (move, grip, release). Each job is handled by a small agent with a short, role-specific prompt **Fig. 12**.
+To avoid making the LLM handle too many tasks at once, we split the pipeline into small steps. First, we parse the user instruction to find the goal, constraints, and object cues, and we fix obvious ambiguities. Then we build the robot plan by (1) resolving any remaining ambiguity, (2) selecting the task-relevant objects, and (3) composing an action sequence from robot primitives (move, grip, release). Each job is handled by a small agent with a short, role-specific prompt see **Fig. 12**.
+
+But some tasks are still hard for a single general prompt, such as assembly or complex trajectory generation. To address this problem, we added specialized agents with task-specific guide prompts. As shown in **Fig. 13**, for example ,the assembly-specialized prompt and its LLM output illustrate how hard tasks can be solved in a modular, step-by-step way.
+
 
 Research paper in preparation for submission to ICRA 2025 <a href="https://arxiv.org/pdf/2406.13642v1" target="_blank">[1]</a>
 
