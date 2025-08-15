@@ -33,6 +33,16 @@ Recently, the performance of large language models (LLMs) has been continuously 
   {% include project-media.html type="video" src="non_pokari_eng.mp4" caption="Human input : i'm thirsty but i don't like pokari sweat. put something to drink on white box" muted=true autoplay=true loop=true%}
 </div>
 
+{% include project-media.html
+   type="video"
+   src="long_eng.mp4"
+   caption="Human input : place the object that looks like it’s about to fall off the desk to the left of the white box, place the Fanta on top of the white box, and from the remaining objects place the smallest to the left of pokari sweat."
+   autoplay=true
+   muted=true
+   loop=true
+   size="medium"
+%}
+
 ## Demo video (2× Speed, user input shown below) (Korean input)
 
 <div class="media-grid-2">
