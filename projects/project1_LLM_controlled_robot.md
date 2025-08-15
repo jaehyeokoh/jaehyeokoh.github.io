@@ -83,7 +83,7 @@ By combining these techniques, the system executes a wide range of commands (fro
 ## Experimental Setup
 {% include project-media.html
    type="image"
-   src="environment_setup.jpg"
+   src="experimental_setup.jpg"
    caption="The experiments used the hardware shown in the image and the GPT API in Python as the LLM."
    size="large"
 %}
