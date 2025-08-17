@@ -220,7 +220,7 @@ And result(**Fig.18**) shows index 1 (can), interpolation produced about 2x more
   {% include project-media.html type="image" src="colli_eval_res.jpg" caption="Fig. 20. Comparison between the baseline and the proposed method result" muted=true autoplay=true loop=true%}
 </div>
 
-Furthermore, we evaluated AnyGrasp’s collision detection using side point-cloud inputs with and without interpolation (**Fig. 19**). For each condition, we ran 10 trials and compared the average number of grasp points, the number of collisions, and the grasp success rate. The results (**Fig. 20**) show about 3× more grasp points with interpolation, 2 collisions in the baseline (no interpolation), and about 2× higher success rate in favor of interpolation.
+Furthermore, we evaluated AnyGrasp’s collision detection using side point-cloud inputs with and without interpolation (**Fig. 19**). For each condition, we ran 10 trials and compared the average number of grasp points, the number of collisions, and the grasp success rate. The results (**Fig. 20**) show about 3× more grasp points with interpolation, 2 collisions in the baseline (no interpolation), and 2× higher success rate in favor of interpolation.
 
 
 ## Limitation and future work
