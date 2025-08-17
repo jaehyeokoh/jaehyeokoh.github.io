@@ -93,7 +93,6 @@ By combining these techniques, the system executes a wide range of commands (fro
 ## 1. Perception
 
 ### 1.1 Problem definition
-
 For a robot to successfully execute a task, it must accurately determine the position, size, and geometry of target objects. However, existing vision–language models (VLMs) struggle to directly output precise spatial coordinates. Object detection models such as Grounding DINO, although capable of generating bounding boxes and object contours, cannot identify targets purely based on semantic properties (e.g., “objects that look like they might fall”) or by recognizing specialized object names (e.g., “Pocari Sweat”) and often exhibit low accuracy in such cases **(Fig. 2, 3)**. To address these complementary weaknesses, We designed a hybrid perception pipeline that integrates the semantic reasoning ability of VLMs with the spatial accuracy of object detectors and segmentation models.
 
 <div class="media-grid-2">
@@ -104,7 +103,6 @@ For a robot to successfully execute a task, it must accurately determine the pos
 </div>
 
 ### 1.2 Basic Idea
-
 The perception module leverages the complementary strengths of two models: (1) Grounding DINO’s robust bounding box generation, and (2) a vision–language model’s semantic identification ability. To validate this approach, We first generated bounding boxes for all visible objects using Grounding DINO, and then provided image with a box(numerical labeled) to the VLM for classification. The use of sequential numerical labels, assigned in the order that bounding boxes were detected, prevents the VLM from being biased or confused by any pre-assigned textual category names.
 
 As shown in **Fig.4**, the VLM correctly assigned semantic labels such as “food” or “non-food” based on appearance and packaging, even in cases where DINO alone would misidentify the target. **Fig.5** further demonstrates that the same pipeline can infer physical and contextual properties, such as identifying an object likely to fall from the desk edge, by reasoning over spatial relationships and object placement.
@@ -142,9 +140,7 @@ This makes side point cloud interpolation a critical step for ensuring both coll
 </div>
 
 
-
 ### 2.2 Side point cloud interpolation
-
 In this project, The robot observes scenes from a top-down viewpoint, leaving most side surfaces unobserved.
 To address this limitation, **Fig. 9** introduces a simple side point cloud interpolation method: first, conduct cluster with DBSCAN, and select the largest-volume cluster, then I extruded the object’s convex hull contour (in the XY-plane) vertically to the estimated object height, effectively forming a “wall” of points around the sides.
 This augmentation improves AnyGrasp’s ability to generate stable grasp poses under partial occlusions as shown in **Fig. 10 and 11**.
