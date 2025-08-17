@@ -187,7 +187,7 @@ During development, we noticed that forcing the LLM to produce strictly formatte
 
 ## Evaluation
 
-### Perception (VLM-Dino method)
+### VLM-Dino method
 {% include project-media.html
    type="image"
    src="dino_evaluation.jpg"
