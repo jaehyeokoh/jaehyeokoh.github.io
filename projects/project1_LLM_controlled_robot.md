@@ -185,6 +185,24 @@ But some tasks, such as assembly or complex trajectory generation, are still dif
 
 During development, we noticed that forcing the LLM to produce strictly formatted outputs (e.g., JSON) reduced performance on our planning tasks. A study<a href="https://arxiv.org/html/2408.02442v1" target="_blank">[6]</a> reports the same pattern( Strict formatting rules can hurt reasoning). So we use a simple, parseable text format (not JSON) during planning, and we observed better performance.
 
+## Evaluation
+
+### Perception (VLM-Dino method)
+
+
+{% include project-media.html
+   type="image"
+   src="dino_evaluation.jpg"
+   caption="Fig. 14  Baseline method used for evaluation"
+   size="large"
+%}
+
+<div class="media-grid-2">
+  {% include project-media.html type="image" src="dino_eva_input.jpg" caption="Fig. 15. Inputs used in the evaluation." muted=true autoplay=true loop=true%}
+  {% include project-media.html type="image" src="dino_eva_rate.jpg" caption="Fig. 16. Comparison of success rates between the baseline and the proposed method" muted=true autoplay=true loop=true%}
+</div>
+
+
 ## Limitation and future work
 
 ### Perception
