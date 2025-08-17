@@ -206,13 +206,13 @@ Grounding DINO showed low accuracy in some inputs while proposed method doesn't 
 This evaluation shows that bypassing Grounding DINO and letting the VLM select the object directly yields higher accuracy, especially in duplicate-object scenes and with specific product names (e.g., Fanta, Pocari Sweat).
 
 ### Side point cloud interpolation
-{% include project-media.html
-   type="image"
-   src="side_point_eva.jpg"
-   caption="Fig. 17  Pointcloud input on Baseline and proposed method"
-   size="medium"
-%}
+<div class="media-grid-2">
+  {% include project-media.html type="image" src="side_point_eva.jpg" caption="Fig. 17  Pointcloud input on Baseline and proposed method" muted=true autoplay=true loop=true%}
+  {% include project-media.html type="image" src="side_eval_res1.jpg" caption="Fig. 18. Comparison between the baseline and the proposed method result" muted=true autoplay=true loop=true%}
+</div>
+
 To evaluate our proposed side point-cloud interpolation method, we compared the number of AnyGrasp candidate grasp points and the real-robot grasp success rate under two input settings: with interpolation and without interpolation. We tested three objects(a can, a small block, and a large block) chosen to match our gripper’s size (see **Fig. 17**). For each object, we ran 10 trials. The object layout was fixed across trials, while lighting varied naturally with sunlight. A trial was counted as success only if the physical grasp succeeded.
+
 
 ## Limitation and future work
 
