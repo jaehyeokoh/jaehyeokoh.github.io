@@ -194,7 +194,7 @@ During development, we noticed that forcing the LLM to produce strictly formatte
    type="image"
    src="dino_evaluation.jpg"
    caption="Fig. 14  Baseline method used for evaluation"
-   size="large"
+   size="medium"
 %}
 
 <div class="media-grid-2">
