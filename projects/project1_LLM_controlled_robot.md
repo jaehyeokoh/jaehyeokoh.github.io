@@ -203,7 +203,7 @@ To evaluate our proposed VLM–DINO method, we implemented a baseline(**Fig. 14*
 
 Grounding DINO showed low accuracy in some inputs while proposed method doesn't (**Fig. 16**). In Input 2, when the VLM produced “Fanta”, Grounding DINO assigned similar scores to a blue can and an orange can, so it couldn’t reliably detect the right target. By contrast, our method lets the VLM select the object directly, bypassing DINO, which yields higher accuracy. In Input 5, the VLM produced “black box” and “black stapler” but the scene contained two black boxes. the box near the image center had sharper edges, and Grounding DINO gave that (incorrect) box the highest score, which reduced the success rate.
 
-This evaluation shows that bypassing Grounding DINO and letting the VLM select the object directly (our proposed method) yields higher accuracy, especially in duplicate-object scenes and with specific product names (e.g., Fanta, Pocari Sweat).
+This evaluation shows that bypassing Grounding DINO and letting the VLM select the object directly yields higher accuracy, especially in duplicate-object scenes and with specific product names (e.g., Fanta, Pocari Sweat).
 
 ## Limitation and future work
 
