@@ -84,7 +84,7 @@ By combining these techniques, the system executes a wide range of commands (fro
 {% include project-media.html
    type="image"
    src="experimental_setup.jpg"
-   caption="The experiments used the hardware shown in the image and the GPT API in Python as the LLM."
+   caption="The experiments used the hardware shown in the image and the GPT API in Python as the LLM. and used Ubuntu"
    size="large"
 %}
 
@@ -217,6 +217,8 @@ To evaluate our proposed side point-cloud interpolation method, we compared the 
   {% include project-media.html type="image" src="colli_eval_input.jpg" caption="Fig. 19  Pointcloud input on Baseline and proposed method and example of grasp points" muted=true autoplay=true loop=true%}
   {% include project-media.html type="image" src="colli_eval_res.jpg" caption="Fig. 20. Comparison between the baseline and the proposed method result" muted=true autoplay=true loop=true%}
 </div>
+
+
 
 ## Limitation and future work
 
