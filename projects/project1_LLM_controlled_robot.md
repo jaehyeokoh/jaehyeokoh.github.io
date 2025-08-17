@@ -184,3 +184,12 @@ To avoid giving the LLM too much work at once, we made an agent that breaks the 
 But some tasks, such as assembly or complex trajectory generation, are still difficult to handle with a general prompt. To address this, we made two types of agents: a simple agent and a hard agent. The simple agent handles straightforward tasks that can be completed with basic pick-and-place operations, while the hard agent handles tasks that need additional reasoning and task-specific prompt guidelines. The hard agent analyzes the user input and routes it to specialized agents equipped with these tailored prompts. As shown in **Fig. 13**, for example, the assembly-specialized prompt and its LLM output demonstrate how complex tasks can be solved in a modular, step-by-step way.
 
 During development, we noticed that forcing the LLM to produce strictly formatted outputs (e.g., JSON) reduced performance on our planning tasks. A study<a href="https://arxiv.org/html/2408.02442v1" target="_blank">[6]</a> reports the same pattern( Strict formatting rules can hurt reasoning). So we use a simple, parseable text format (not JSON) during planning, and we observed better performance.
+
+## Limitation and future work
+
+### Perception
+During the project, we observed that the LLM plans only over objects visible in the current frame. When the true target is out of view, it often selects a visible non-target instead (see the video and image below).
+<div class="media-grid-2">
+  {% include project-media.html type="video" src="perception_limit_1.mp4" caption="input : place the Fanta to the left of white box, place the object that looks like it’s about to fall off the desk in front of the white box, and from the remaining objects place the smallest on the white box." muted=true autoplay=true loop=true%}
+  {% include project-media.html type="image" src="perception_limit.png" caption="Limitation with a single-view camera. When the target “about to fall” is outside the camera’s field of view, the system considers only visible objects and chooses a distractor" muted=true autoplay=true loop=true%}
+</div>
