@@ -193,3 +193,11 @@ During the project, we observed that the LLM plans only over objects visible in 
   {% include project-media.html type="video" src="perception_limit_1.mp4" caption="input : place the Fanta to the left of white box, place the object that looks like it’s about to fall off the desk in front of the white box, and from the remaining objects place the smallest on the white box." muted=true autoplay=true loop=true%}
   {% include project-media.html type="image" src="perception_limit.png" caption="Limitation with a single-view camera. When the target “about to fall” is outside the camera’s field of view, the system considers only visible objects and chooses a distractor" muted=true autoplay=true loop=true%}
 </div>
+
+and we interpolate side points by extruding the 2D top mask vertically, which assumes linear, vertical walls. For objects with non-linear side geometry (curved,tapered..), this leads to misestimated geometry and can produce invalid grasp poses.(**Fig. 14**)
+{% include project-media.html
+   type="image"
+   src="incorrect_side.jpg"
+   caption="Fig. 14  Example of a limitation in the side point-cloud interpolation method"
+   size="large"
+%}
