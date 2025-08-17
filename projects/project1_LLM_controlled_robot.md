@@ -205,6 +205,16 @@ Grounding DINO showed low accuracy in some inputs while proposed method doesn't 
 
 This evaluation shows that bypassing Grounding DINO and letting the VLM select the object directly yields higher accuracy, especially in duplicate-object scenes and with specific product names (e.g., Fanta, Pocari Sweat).
 
+### Side point cloud interpolation
+
+
+{% include project-media.html
+   type="image"
+   src="side_point_eva.jpg"
+   caption="Fig. 17  Pointcloud input on Baseline and proposed method"
+   size="medium"
+%}
+
 ## Limitation and future work
 
 ### Perception
