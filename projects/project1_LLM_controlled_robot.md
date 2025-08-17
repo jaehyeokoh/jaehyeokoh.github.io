@@ -227,6 +227,10 @@ Furthermore, we evaluated AnyGrasp’s collision detection using side point-clou
   {% include project-media.html type="image" src="plan_eval.jpg" caption="Fig. 22. Total evaluation result" muted=true autoplay=true loop=true%}
 </div>
 
+Finally we evaluated out project by inputs shown in **Fig. 21**. Input 1 was designed to evaluate brand-name recognition and grounding. Input 2 was used to evaluate preference-aware reasoning under negation, such as selecting a drink that is not Fanta.Input 3 was intended to evaluate multi-step reasoning and execution, involving both category classification and size-based selection. Input 4 was used to evaluate physical-scene risk assessment, namely the perception of an object likely to fall off the table, together with its execution. Finally, Input 5 was designed to evaluate global placement planning and size-ordered arrangement. And we measured the Perception Success Rate (whether the VLM correctly selects the object specified in the input), the Planning Success Rate (whether the system generates a correct action plan from the input), and the Execution Success Rate (whether the robot successfully executes the generated plan and AnyGrasp output).
+
+The results(**Fig. 22**). For Inputs 1–3, perception and planning achieved 90–100%, while execution was 70–90%. In Input 2, the LLM once picked “Fanta” even though it was not preferred, which led to the 90% planning success. In Input 3, the VLM misclassified the black box as a chocolate bar, and the the planner mistakenly left the edible item in the remaining set, yielding 90% for both perception and planning and 70% execution. In contrast, Inputs 4 and 5 performed worse. For Input 4, after placing the largest object to the left of the white box, the object(about to fall) moved out of view. without a target re-acquisition/search policy, the LLM selected an incorrect object (60% perception, 40% execution). For Input 5, the planner sometimes selected the white box, and the perception module treated a partially cropped object as the smallest, reducing performance to 70% perception, 60% planning, and 30% execution.
+
 ## Limitation and future work
 
 ### Perception
