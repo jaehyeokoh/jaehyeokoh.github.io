@@ -188,20 +188,22 @@ During development, we noticed that forcing the LLM to produce strictly formatte
 ## Evaluation
 
 ### Perception (VLM-Dino method)
-To evaluate our proposed VLM–DINO method, we implemented a baseline(**Fig. 14**). In this baseline, the VLM first selects the target object’s name. We pass that name to Grounding DINO to localize the object (bounding box), then apply SAM to segment it and compute the object’s 3D properties. The planner LLM consumes these object metadata (3D properties) together with the VLM-generated purpose of the selected object to produce the action sequence. For each instruction, we ran 10 trials. The object layout was fixed across trials, while lighting varied naturally with sunlight. a trial is counted as success only if the selected object matches the ground-truth target, otherwise it is counted as failure.
-
 {% include project-media.html
    type="image"
    src="dino_evaluation.jpg"
    caption="Fig. 14  Baseline method used for evaluation"
    size="medium"
 %}
+To evaluate our proposed VLM–DINO method, we implemented a baseline(**Fig. 14**). In this baseline, the VLM first selects the target object’s name. We pass that name to Grounding DINO to localize the object (bounding box), then apply SAM to segment it and compute the object’s 3D properties. The planner LLM consumes these object metadata (3D properties) together with the VLM-generated purpose of the selected object to produce the action sequence. For each instruction, we ran 10 trials per inputs(**Fig. 15**). The object layout was fixed across trials, while lighting varied naturally with sunlight. a trial is counted as success only if the selected object matches the ground-truth target, otherwise it is counted as failure.
 
 <div class="media-grid-2">
   {% include project-media.html type="image" src="dino_eva_input.jpg" caption="Fig. 15. Inputs used in the evaluation." muted=true autoplay=true loop=true%}
   {% include project-media.html type="image" src="dino_eva_rate.jpg" caption="Fig. 16. Comparison of success rates between the baseline and the proposed method" muted=true autoplay=true loop=true%}
 </div>
 
+Grounding DINO showed low accuracy in some inputs while proposed method doesn't (**Fig. 16**). In Input 2, when the VLM produced “Fanta”, Grounding DINO assigned similar scores to a blue can and an orange can, so it couldn’t reliably detect the right target. By contrast, our method lets the VLM select the object directly, bypassing DINO, which yields higher accuracy. In Input 5, the VLM produced “black box” and “black stapler” but the scene contained two black boxes. the box near the image center had sharper edges, and Grounding DINO gave that (incorrect) box the highest score, which reduced the success rate.
+
+This evaluation shows that bypassing Grounding DINO and letting the VLM select the object directly (our proposed method) yields higher accuracy, especially in duplicate-object scenes and with specific product names (e.g., Fanta, Pocari Sweat).
 
 ## Limitation and future work
 
