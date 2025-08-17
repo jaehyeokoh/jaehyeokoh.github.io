@@ -199,5 +199,5 @@ and we interpolate side points by extruding the 2D top mask vertically, which as
    type="image"
    src="incorrect_side.jpg"
    caption="Fig. 14  Example of a limitation in the side point-cloud interpolation method"
-   size="large"
+   size="medium"
 %}
