@@ -213,11 +213,14 @@ This evaluation shows that bypassing Grounding DINO and letting the VLM select t
 
 To evaluate our proposed side point-cloud interpolation method, we compared the number of AnyGrasp candidate grasp points and the real-robot grasp success rate under two input settings: with interpolation and without interpolation. We tested three objects(a can, a small block, and a large block) chosen to match our gripper’s size (see **Fig. 17**). For each object, we ran 10 trials. The object layout was fixed across trials, while lighting varied naturally with sunlight. A trial was counted as success only if the physical grasp succeeded.
 
+And result(**Fig.18**) shows index 1 (can), interpolation produced about 2x more grasp points, yet both inputs had similarly high success rates. For index 2 (large black box), the grasp-point gap was a little under 2×, and the success rates were again about the same. These two objects are large enough that top-down grasps already work well, so extra side grasp points do not change the outcome. In contrast, for index 3 (small black box), interpolation yielded about 3× more grasp points and 2× higher success. That's because the top surface is small, so vertical grasps often fail and side grasp is needed.
+
 <div class="media-grid-2">
   {% include project-media.html type="image" src="colli_eval_input.jpg" caption="Fig. 19  Pointcloud input on Baseline and proposed method and example of grasp points" muted=true autoplay=true loop=true%}
   {% include project-media.html type="image" src="colli_eval_res.jpg" caption="Fig. 20. Comparison between the baseline and the proposed method result" muted=true autoplay=true loop=true%}
 </div>
 
+Furthermore, we evaluated AnyGrasp’s collision detection using side point-cloud inputs with and without interpolation (**Fig. 19**). For each condition, we ran 10 trials and compared the average number of grasp points, the number of collisions, and the grasp success rate. The results (**Fig. 20**) show about 3× more grasp points with interpolation, 2 collisions in the baseline (no interpolation), and about 2× higher success rate in favor of interpolation.
 
 
 ## Limitation and future work
