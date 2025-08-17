@@ -188,7 +188,7 @@ During development, we noticed that forcing the LLM to produce strictly formatte
 ## Evaluation
 
 ### Perception (VLM-Dino method)
-
+To evaluate our proposed VLM–DINO method, we implemented a baseline(**Fig. 14**). In this baseline, the VLM first selects the target object’s name. We pass that name to Grounding DINO to localize the object (bounding box), then apply SAM to segment it and compute the object’s 3D properties. The planner LLM consumes these object metadata (3D properties) together with the VLM-generated purpose of the selected object to produce the action sequence. For each instruction, we ran 10 trials. The object layout was fixed across trials, while lighting varied naturally with sunlight. a trial is counted as success only if the selected object matches the ground-truth target, otherwise it is counted as failure.
 
 {% include project-media.html
    type="image"
