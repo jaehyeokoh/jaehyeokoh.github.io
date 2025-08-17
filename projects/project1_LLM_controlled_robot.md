@@ -213,6 +213,10 @@ This evaluation shows that bypassing Grounding DINO and letting the VLM select t
 
 To evaluate our proposed side point-cloud interpolation method, we compared the number of AnyGrasp candidate grasp points and the real-robot grasp success rate under two input settings: with interpolation and without interpolation. We tested three objects(a can, a small block, and a large block) chosen to match our gripper’s size (see **Fig. 17**). For each object, we ran 10 trials. The object layout was fixed across trials, while lighting varied naturally with sunlight. A trial was counted as success only if the physical grasp succeeded.
 
+<div class="media-grid-2">
+  {% include project-media.html type="image" src="colli_eval_input.jpg" caption="Fig. 19  Pointcloud input on Baseline and proposed method and example of grasp points" muted=true autoplay=true loop=true%}
+  {% include project-media.html type="image" src="colli_eval_res.jpg" caption="Fig. 20. Comparison between the baseline and the proposed method result" muted=true autoplay=true loop=true%}
+</div>
 
 ## Limitation and future work
 
