@@ -234,6 +234,9 @@ The results(**Fig. 22**). For Inputs 1–3, perception and planning achieved 90�
 
 ## Limitation and future work
 
+### Action modules
+During this project, we confirmed that an LLM can produce long-horizon task plans (e.g., building a dolmen, pyramid, or tower) but cannot synthesize the fine, continuous, dexterous motion paths required for execution. To address this, we found the <a href="https://arxiv.org/pdf/2410.24164" target="_blank">pi_0</a> paper’s method promising and we will adopt it: a transformer VLM encodes text, images, and robot state into a context representation, and an action expert trained with flow matching generates the continuous action sequence conditioned on that context. We will keep the LLM at the planning layer (short, grounded subtask texts) and call pi_0 as a manipulation agent for execution, and we will expand the set of supported actions so that the LLM can select the proper module and feed clear step-level instructions.
+
 ### Perception
 During the project, we observed that The LLM only uses the objects visible in the camera frame. When the true target is out of view, it often selects a visible non-target instead (see the video and image below).
 <div class="media-grid-2">
@@ -241,7 +244,7 @@ During the project, we observed that The LLM only uses the objects visible in th
   {% include project-media.html type="image" src="perception_limit.png" caption="Limitation with a single-view camera. When the target “about to fall” is outside the camera’s field of view, the system considers only visible objects and chooses a distractor" muted=true autoplay=true loop=true%}
 </div>
 
-Additionally, because we interpolate side points by extruding the 2D top mask vertically, which assumes linear, vertical walls. For objects with non-linear side geometry (curved,tapered..), this leads to misestimated geometry and can produce invalid grasp poses.(**Fig. 14**)
+Additionally, because we interpolate side points by extruding the 2D top mask vertically, which assumes linear, vertical walls. For objects with non-linear side geometry (curved,tapered..), this leads to misestimated geometry and can produce invalid grasp poses.(**Fig. 23**)
 {% include project-media.html
    type="image"
    src="incorrect_side.jpg"
@@ -249,3 +252,4 @@ Additionally, because we interpolate side points by extruding the 2D top mask ve
    size="medium"
 %}
 
+There are study related this problem. One study suggests making camera track best scene like human being, although it is processed by BC-RL but If we attach Imitation learned module (like we attached anygrasp to grasp obect), by 
