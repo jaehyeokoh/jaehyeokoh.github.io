@@ -1,0 +1,18 @@
+
+Furthermore, the pi_0 paper indicates that producing fine motions often requires additional training/fine-tuning on that motion. Therefore, we suggest that if an LLM can assemble a small set of reusable motions (e.g., grasp, release, tilt, rotate), we can avoid task-per-action policies and thereby improve generality.
+
+And during the project, we observed that The LLM only uses the objects visible in the camera frame. When the true target is out of view, it often selects a visible non-target instead (see the video and image below).
+<div class="media-grid-2">
+  {% include project-media.html type="video" src="perception_limit_1.mp4" caption="input : place the Fanta to the left of white box, place the object that looks like it’s about to fall off the desk in front of the white box, and from the remaining objects place the smallest on the white box." muted=true autoplay=true loop=true%}
+  {% include project-media.html type="image" src="perception_limit.png" caption="Limitation with a single-view camera. When the target “about to fall” is outside the camera’s field of view, the system considers only visible objects and chooses a distractor" muted=true autoplay=true loop=true%}
+</div>
+
+Additionally, because we interpolate side points by extruding the 2D top mask vertically, which assumes linear, vertical walls. For objects with non-linear side geometry (curved,tapered..), this leads to misestimated geometry and can produce invalid grasp poses.(**Fig. 23**)
+{% include project-media.html
+   type="image"
+   src="incorrect_side.jpg"
+   caption="Fig. 23  Example of a limitation in the side point-cloud interpolation method"
+   size="medium"
+%}
+
+There are study related this problem. One study suggests making camera track best scene like human being, although it is processed by BC-RL but If we attach Imitation learned module (like we attached anygrasp to grasp obect), by 
