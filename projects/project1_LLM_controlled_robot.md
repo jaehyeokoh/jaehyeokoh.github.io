@@ -236,3 +236,19 @@ The results(**Fig. 22**). For Inputs 1–3, perception and planning achieved 90�
 During this project, we observed that an LLM can produce long-horizon task plans (e.g., building a dolmen, pyramid, or tower) but cannot synthesize the fine, continuous, dexterous motion paths required for execution. To address this, we found the <a href="https://arxiv.org/pdf/2410.24164" target="_blank">pi_0</a> paper’s method promising and we are going to adopt it (a transformer VLM encodes text, images, and robot state into a context representation, and an action expert generates the continuous action sequence conditioned on that context(made from input states).) We will keep the LLM at the planning layer (short, grounded subtask texts) and call pi_0 as a manipulation agent for execution, and we will expand the set of supported actions so that the LLM can feed clear step-level instructions to action modules.
 
 But large LLMs can become a latency bottleneck (policy inference slower than actuation). In the <a href="https://www.physicalintelligence.company/download/real_time_chunking.pdf" target="_blank">Real-Time Execution of Action Chunking Flow Policies</a> paper, they propose “real-time chunking,” which enables inference while actions are executing. The algorithm generates the next action chunk while the previous one runs, freezes the portion guaranteed to be executed (due to inference delay), and “inpaints” the rest. So we will study this method and implement it in our pipeline.
+
+And during the project, we observed that The LLM only uses the objects visible in the camera frame. When the true target is out of view, it often selects a visible non-target instead (see the video and image below).
+<div class="media-grid-2">
+  {% include project-media.html type="video" src="perception_limit_1.mp4" caption="input : place the Fanta to the left of white box, place the object that looks like it’s about to fall off the desk in front of the white box, and from the remaining objects place the smallest on the white box." muted=true autoplay=true loop=true%}
+  {% include project-media.html type="image" src="perception_limit.png" caption="Limitation with a single-view camera. When the target “about to fall” is outside the camera’s field of view, the system considers only visible objects and chooses a distractor" muted=true autoplay=true loop=true%}
+</div>
+
+Additionally, because we interpolate side points by extruding the 2D top mask vertically, which assumes linear, vertical walls. For objects with non-linear side geometry (curved,tapered..), this leads to misestimated geometry and can produce invalid grasp poses.(**Fig. 23**)
+{% include project-media.html
+   type="image"
+   src="incorrect_side.jpg"
+   caption="Fig. 23  Example of a limitation in the side point-cloud interpolation method"
+   size="medium"
+%}
+
+We observed that when the true target is outside the camera view, the policy (LLM/VLM) often acts on a visible but wrong object. In the papers we reviewed(pi_0,..), we did not find a dedicated active perception module for this case. As future work, we will study an active perception layer. A VLM first checks whether the current view is good enough(like target is on view). If it is not, a high-level LLM suggests a short next-best-view move sequence (for example, wrist-camera sweeps or minor base moves). Once a good view is obtained, the VLM rechecks the scene and the VLA executes the task. A likely limitation is added latency from checking the view and planning these moves. Although a few recent papers explore LLM/VLM-guided active perception, the literature is still limited. We expect this direction to be valuable for future VLA systems.
