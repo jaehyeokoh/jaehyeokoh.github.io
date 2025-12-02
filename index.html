@@ -67,24 +67,33 @@ layout: default
 </div>
 
 
-<!-- Docs Section (New!) -->
+<!-- Docs Section -->
 <div class="section">
     <h2>Docs</h2>
-    <div class="projects-list"> <!-- 기존 스타일 재사용 -->
+    <div class="projects-list">
         {% for doc in site.data.docs %}
-        <div class="project-item">
-            <h3>
+        <!-- 1. 항목 간격(padding)을 줄였습니다 (20px -> 12px) -->
+        <div class="project-item" style="padding: 12px 0;">
+            
+            <!-- 2. 제목 크기를 줄였습니다 (1.3rem -> 1.0rem) -->
+            <h3 style="font-size: 1.0rem; margin-bottom: 4px;">
                 {% if doc.page_url %}
                 <a href="{{ doc.page_url | relative_url }}">{{ doc.title }}</a>
                 {% else %}
                 {{ doc.title }}
                 {% endif %}
             </h3>
-            <div class="project-meta">
+
+            <!-- 3. 날짜/카테고리 크기를 줄였습니다 (0.9rem -> 0.8rem) -->
+            <div class="project-meta" style="font-size: 0.8rem; margin-bottom: 6px;">
                 {{ doc.date | date: "%Y.%m.%d" }} 
                 {% if doc.category %}• {{ doc.category }}{% endif %}
             </div>
-            <div class="project-description">{{ doc.description }}</div>
+
+            <!-- 4. 설명 글자 크기와 줄 간격을 줄였습니다 -->
+            <div class="project-description" style="font-size: 0.9rem; line-height: 1.4;">
+                {{ doc.description }}
+            </div>
         </div>
         {% endfor %}
     </div>
