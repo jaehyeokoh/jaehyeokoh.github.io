@@ -75,13 +75,13 @@ X221D 보드는 일반적인 방법으로 설치가 불가능하므로 **JetPack
 
 ### 3.1 SDK Manager 실행 및 다운로드
 
-1\.  아카이브 버전을 활성화하여 SDK Manager를 실행합니다.
+1.  아카이브 버전을 활성화하여 SDK Manager를 실행합니다.
     ```bash
     sdkmanager --archivedversions
     ```
 
 
-2\.  설정 화면에서 다음과 같이 선택합니다 (기기 인식이 안되는 것은 정상입니다.)(img 1):
+2.  설정 화면에서 다음과 같이 선택합니다 (기기 인식이 안되는 것은 정상입니다.)(img 1):
       * **Target Hardware**: Jetson AGX Xavier modules
       * **JetPack Version**: 5.1.2
 
@@ -92,7 +92,7 @@ X221D 보드는 일반적인 방법으로 설치가 불가능하므로 **JetPack
         size="medium"    
     %}
 
-3\.  설치 과정에서 **Flash는 건너뛰고(Skip)**, 필요한 파일만 다운로드(Download only)한 뒤 종료합니다(img 2).
+3.  설치 과정에서 **Flash는 건너뛰고(Skip)**, 필요한 파일만 다운로드(Download only)한 뒤 종료합니다(img 2).
     
     {% include project-media.html
         type="image"
@@ -104,7 +104,7 @@ X221D 보드는 일반적인 방법으로 설치가 불가능하므로 **JetPack
 ### 3.2 X221D 전용 펌웨어 패치
 
 
-1\. WSL 경로(`~/nvidia/nvidia_sdk/JetPack_5.1.2...`)에 폴더가 생성되었는지 확인합니다.(img 3)
+1. WSL 경로(`~/nvidia/nvidia_sdk/JetPack_5.1.2...`)에 폴더가 생성되었는지 확인합니다.(img 3)
 
     {% include project-media.html
         type="image"
@@ -113,7 +113,7 @@ X221D 보드는 일반적인 방법으로 설치가 불가능하므로 **JetPack
         size="medium"    
     %}
 
-2\. [Auvidea 펌웨어 사이트](https://auvidea.eu/firmware/) 에서 **X220, X221, X400용 펌웨어 (JetPack 5.1.2용)**를 다운로드합니다.(img 4)
+2. [Auvidea 펌웨어 사이트](https://auvidea.eu/firmware/) 에서 **X220, X221, X400용 펌웨어 (JetPack 5.1.2용)**를 다운로드합니다.(img 4)
 
     {% include project-media.html
         type="image"
@@ -122,17 +122,16 @@ X221D 보드는 일반적인 방법으로 설치가 불가능하므로 **JetPack
         size="medium"    
     %}
 
-3\. 다운로드한 파일의 압축을 `kernel_out` 폴더가 나올 때까지 반복 해제합니다.
+3. 다운로드한 파일의 압축을 `kernel_out` 폴더가 나올 때까지 반복 해제합니다.
 
-4\. `kernel_out` 내부의 파일들을 `Linux_for_Tegra` 폴더로 복사(덮어쓰기) 합니다.(img 5)
-    * 대상 경로 예시: `~/nvidia/nvidia_sdk/JetPack_5.1.2_Linux_JETSON_AGX_XAVIER_TARGETS/Linux_for_Tegra`
+4. `kernel_out` 내부의 파일들을 `Linux_for_Tegra` 폴더로 복사(덮어쓰기) 합니다.(img 5)* 대상 경로 예시: `~/nvidia/nvidia_sdk/JetPack_5.1.2_Linux_JETSON_AGX_XAVIER_TARGETS/Linux_for_Tegra`
 
-    {% include project-media.html
-        type="image"
-        src="sdk_5.png"
-        caption="img 5"
-        size="medium"    
-    %}
+{% include project-media.html
+    type="image"
+    src="sdk_5.png"
+    caption="img 5"
+    size="medium"    
+%}
 
 ### 3.3 바이너리 적용
 
@@ -152,21 +151,21 @@ WSL에서 USB 장치를 인식시킨 후 Flash를 진행합니다.
 
 ### 4.1 USBIPD 설정 (Windows -\> WSL 연결)
 
-1\.  Windows에서 [usbipd-win](https://github.com/dorssel/usbipd-win/releases) (x64.msi)를 설치합니다.
-2\.  Jetson을 리커버리 모드(또는 전원 ON 상태)로 연결합니다.
-3\.  \*\*Windows PowerShell(관리자 권한)\*\*을 열고 다음을 실행합니다.
+1.  Windows에서 [usbipd-win](https://github.com/dorssel/usbipd-win/releases) (x64.msi)를 설치합니다.
+2.  Jetson을 리커버리 모드(또는 전원 ON 상태)로 연결합니다.
+3.  \*\*Windows PowerShell(관리자 권한)\*\*을 열고 다음을 실행합니다.
     ```powershell
     usbipd list
     ```
 
-4\.  목록에서 `APX` 장치의 BUSID(예: 5-2)를 확인합니다.
-5\.  장치를 바인딩하고 WSL로 연결합니다.
+4.  목록에서 `APX` 장치의 BUSID(예: 5-2)를 확인합니다.
+5.  장치를 바인딩하고 WSL로 연결합니다.
     ```powershell
     usbipd bind -b <BUSID>
     usbipd attach --wsl --busid <BUSID> --auto-attach
     ```
 
-6\.  WSL 터미널에서 `lsusb` 등으로 장치가 인식되었는지 확인합니다.
+6.  WSL 터미널에서 `lsusb` 등으로 장치가 인식되었는지 확인합니다.
 
 {% include project-media.html
     type="image"
