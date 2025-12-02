@@ -13,6 +13,14 @@ permalink: /docs/Jetson_AGX_Xavier/
 
 ### 1.1 하드웨어 사양
 
+{% include project-media.html
+    type="image"
+    src="jetson_component.png"
+    caption="구성품"
+    size="medium"    
+%}
+
+
   * **Module**: Jetson AGX Xavier (32GB)
   * **Carrier Board**: Auvidea X221D 
   * **Storage**: NVMe M.2 SSD (PCIe x4 2280) 호환 
