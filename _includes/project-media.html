@@ -3,21 +3,27 @@
 {% include project-media.html 
    type="image" 
    src="image.jpg" 
-   alt="설명" 
-   caption="이미지 설명" 
+   caption="설명" 
 %}
-
-프로젝트 이름은 페이지 URL에서 자동으로 추출됩니다.
-예: /projects/human-robot-communication/ → human-robot-communication
 {% endcomment %}
 
-<!-- 프로젝트 이름 자동 추출 (확장자 제거) -->
-{% assign project_name = page.url | split: '/' | last %}
-{% if project_name == '' %}
-  {% assign project_name = page.url | split: '/' | slice: -2, 1 | first %}
+<!-- 1. 페이지 이름(폴더명) 추출 -->
+{% assign page_slug = page.url | split: '/' | last %}
+{% if page_slug == '' %}
+  {% assign page_slug = page.url | split: '/' | slice: -2, 1 | first %}
 {% endif %}
-<!-- .html과 .md 확장자 모두 제거 -->
-{% assign project_name = project_name | replace: '.html', '' | replace: '.md', '' %}
+{% assign page_slug = page_slug | replace: '.html', '' | replace: '.md', '' %}
+
+<!-- 2. 카테고리(projects vs docs) 감지 및 기본 경로 설정 -->
+{% assign url_parts = page.url | split: '/' %}
+{% assign category = url_parts[1] %}
+
+<!-- URL이 /docs/로 시작하면 assets/docs/ 폴더를, 아니면 assets/projects/를 사용 -->
+{% if category == 'docs' %}
+  {% assign asset_base = '/assets/docs/' %}
+{% else %}
+  {% assign asset_base = '/assets/projects/' %}
+{% endif %}
 
 <div class="project-media {{ include.type }}{% if include.size %} {{ include.size }}{% endif %}">
   {% if include.type == "image" or include.type == "gif" %}
