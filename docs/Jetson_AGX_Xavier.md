@@ -101,24 +101,29 @@ X221D 보드는 일반적인 방법으로 설치가 불가능하므로 **JetPack
 ### 3.2 X221D 전용 펌웨어 패치
 
 
+1. WSL 경로(`~/nvidia/nvidia_sdk/JetPack_5.1.2...`)에 폴더가 생성되었는지 확인합니다.(img 3)
 
-1.  WSL 경로(`~/nvidia/nvidia_sdk/JetPack_5.1.2...`)에 폴더가 생성되었는지 확인합니다.(img 3)
     {% include project-media.html
         type="image"
         src="sdk_3.png"
         caption="img 3"
         size="medium"    
     %}
-2.  [Auvidea 펌웨어 사이트](https://auvidea.eu/firmware/) 에서 \*\*X220, X221, X400용 펌웨어 (JetPack 5.1.2용)\*\*를 다운로드합니다.(img 4)
+
+2. [Auvidea 펌웨어 사이트](https://auvidea.eu/firmware/) 에서 **X220, X221, X400용 펌웨어 (JetPack 5.1.2용)**를 다운로드합니다.(img 4)
+
     {% include project-media.html
         type="image"
         src="sdk_4.png"
         caption="img 4"
         size="medium"    
     %}
+
 3. 다운로드한 파일의 압축을 `kernel_out` 폴더가 나올 때까지 반복 해제합니다.
-4.  `kernel_out` 내부의 파일들을 `Linux_for_Tegra` 폴더로 복사(덮어쓰기) 합니다.(img 5)
-      * 대상 경로 예시: `~/nvidia/nvidia_sdk/JetPack_5.1.2_Linux_JETSON_AGX_XAVIER_TARGETS/Linux_for_Tegra`
+
+4. `kernel_out` 내부의 파일들을 `Linux_for_Tegra` 폴더로 복사(덮어쓰기) 합니다.(img 5)
+    * 대상 경로 예시: `~/nvidia/nvidia_sdk/JetPack_5.1.2_Linux_JETSON_AGX_XAVIER_TARGETS/Linux_for_Tegra`
+
     {% include project-media.html
         type="image"
         src="sdk_5.png"
