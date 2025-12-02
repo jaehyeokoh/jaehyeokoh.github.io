@@ -7,22 +7,28 @@
 %}
 {% endcomment %}
 
-<!-- 1. 페이지 이름(폴더명) 추출 -->
-{% assign page_slug = page.url | split: '/' | last %}
-{% if page_slug == '' %}
-  {% assign page_slug = page.url | split: '/' | slice: -2, 1 | first %}
+<!-- 1. 페이지 이름(폴더명) 추출 (기존의 잘 작동하던 로직 복구) -->
+{% assign project_name = page.url | split: '/' | last %}
+{% if project_name == '' %}
+  {% assign project_name = page.url | split: '/' | slice: -2, 1 | first %}
 {% endif %}
-{% assign page_slug = page_slug | replace: '.html', '' | replace: '.md', '' %}
+{% assign project_name = project_name | replace: '.html', '' | replace: '.md', '' %}
 
-<!-- 2. 카테고리(projects vs docs) 감지 및 기본 경로 설정 -->
-{% assign url_parts = page.url | split: '/' %}
-{% assign category = url_parts[1] %}
 
-<!-- URL이 /docs/로 시작하면 assets/docs/ 폴더를, 아니면 assets/projects/를 사용 -->
-{% if category == 'docs' %}
-  {% assign asset_base = '/assets/docs/' %}
+<!-- 2. 경로 생성 로직 (Layout 기반으로 더 안전하게 변경) -->
+{% assign src_start = include.src | slice: 0 %}
+
+<!-- (A) 수동 경로: /로 시작하거나 http가 포함된 경우 입력값 그대로 사용 -->
+{% if src_start == '/' or include.src contains 'http' %}
+  {% assign final_src = include.src %}
+
+<!-- (B) Docs 페이지인 경우: assets/docs/ 폴더 사용 -->
+{% elsif page.layout == 'doc' or page.url contains '/docs/' %}
+  {% assign final_src = '/assets/docs/' | append: project_name | append: '/' | append: include.src %}
+
+<!-- (C) 그 외(기본값): 기존처럼 assets/projects/ 폴더 사용 -->
 {% else %}
-  {% assign asset_base = '/assets/projects/' %}
+  {% assign final_src = '/assets/projects/' | append: project_name | append: '/' | append: include.src %}
 {% endif %}
 
 <div class="project-media {{ include.type }}{% if include.size %} {{ include.size }}{% endif %}">
