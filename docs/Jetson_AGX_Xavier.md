@@ -80,12 +80,6 @@ X221D 보드는 일반적인 방법으로 설치가 불가능하므로 **JetPack
     ```bash
     sdkmanager --archivedversions
     ```
-{% include project-media.html
-    type="image"
-    src="sdk_1.png"
-    caption="img 1"
-    size="medium"    
-%}
 
 
 2.  설정 화면에서 다음과 같이 선택합니다 (기기 인식이 안되는 것은 정상입니다.)(img 1):
@@ -94,12 +88,22 @@ X221D 보드는 일반적인 방법으로 설치가 불가능하므로 **JetPack
 
 {% include project-media.html
     type="image"
+    src="sdk_1.png"
+    caption="img 1"
+    size="medium"    
+%}
+
+
+
+3.  설치 과정에서 **Flash는 건너뛰고(Skip)**, 필요한 파일만 다운로드(Download only)한 뒤 종료합니다(img 2).
+
+
+{% include project-media.html
+    type="image"
     src="sdk_2.png"
     caption="img 2"
     size="medium"    
 %}
-
-3.  설치 과정에서 **Flash는 건너뛰고(Skip)**, 필요한 파일만 다운로드(Download only)한 뒤 종료합니다(img 2).
 
 ### 3.2 X221D 전용 펌웨어 패치
 
