@@ -1,3 +1,15 @@
+---
+layout: project
+title: "A multi-modal robotic control system that interprets high-level natural language commands"
+year: "2025"
+tech_stack: "Python, LLM, Vision"
+status: "Ongoing"
+permalink: /docs/sample_doc/
+links:
+  - name: "GitHub(comming soon)"
+    url: ""
+---
+
 layout: doc title: "My First Documentation" date: 2025-05-20 category: "Tutorial" permalink: /docs/sample_doc/
 
 Introduction to Docs
