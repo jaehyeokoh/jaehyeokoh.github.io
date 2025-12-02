@@ -2,7 +2,7 @@
 layout: project
 title: "Jetson AGX Xavier (X221D Carrier Board) 설치 및 설정 가이드"
 year: "2025"
-permalink: /docs/sample_doc/
+permalink: /docs/Jetson_AGX_Xavier/
 ---
 
 # Jetson AGX Xavier (X221D Carrier Board) 설치 및 설정 가이드

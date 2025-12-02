@@ -1,5 +1,5 @@
-- title: "My First Documentation"
+- title: "Jetson AGX Xavier (X221D Carrier Board) 설치 및 설정 가이드"
   date: "2025-05-20"
-  description: "This is a sample documentation page. You can write tutorials, notes, or research logs here."
+  description: "Jetson AGX Xavier 와 X221D 보드에서의 Jetpack 설치 방법 (window 환경)"
   category: "Tutorial"
-  page_url: "/docs/sample_doc/"
+  page_url: "/docs/Jetson_AGX_Xavier/"
