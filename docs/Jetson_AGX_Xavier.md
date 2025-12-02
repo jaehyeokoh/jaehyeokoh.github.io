@@ -173,6 +173,13 @@ WSL에서 USB 장치를 인식시킨 후 Flash를 진행합니다.
 
 6.  WSL 터미널에서 `lsusb` 등으로 장치가 인식되었는지 확인합니다.
 
+{% include project-media.html
+    type="image"
+    src="usbipd_1.png"
+    caption="usbipd 참조 사진"
+    size="medium"    
+%}
+
 ### 4.2 Flash 명령어 실행
 
 WSL의 `Linux_for_Tegra` 경로에서 다음 명령어를 실행하여 보드를 Flash 합니다.
