@@ -30,7 +30,6 @@ permalink: /docs/Jetson_AGX_Xavier/
 1.  SSD 및 하드웨어 구성 요소를 조립합니다.
 2.  전원, 이더넷, USB 등을 연결합니다.
 3.  **USB-C 포트**를 사용하여 Host PC와 Jetson을 연결합니다.
-
 {% include project-media.html
     type="image"
     src="jetson_connect_pc.png"
@@ -85,48 +84,47 @@ X221D 보드는 일반적인 방법으로 설치가 불가능하므로 **JetPack
 2.  설정 화면에서 다음과 같이 선택합니다 (기기 인식이 안되는 것은 정상입니다.)(img 1):
       * **Target Hardware**: Jetson AGX Xavier modules
       * **JetPack Version**: 5.1.2
-{% include project-media.html
-    type="image"
-    src="sdk_1.png"
-    caption="img 1"
-    size="medium"    
-%}
+    {% include project-media.html
+        type="image"
+        src="sdk_1.png"
+        caption="img 1"
+        size="medium"    
+    %}
 3.  설치 과정에서 **Flash는 건너뛰고(Skip)**, 필요한 파일만 다운로드(Download only)한 뒤 종료합니다(img 2).
-
-{% include project-media.html
-    type="image"
-    src="sdk_2.png"
-    caption="img 2"
-    size="medium"    
-%}
+    {% include project-media.html
+        type="image"
+        src="sdk_2.png"
+        caption="img 2"
+        size="medium"    
+    %}
 
 ### 3.2 X221D 전용 펌웨어 패치
 
 
 
 1.  WSL 경로(`~/nvidia/nvidia_sdk/JetPack_5.1.2...`)에 폴더가 생성되었는지 확인합니다.(img 3)
-{% include project-media.html
-    type="image"
-    src="sdk_3.png"
-    caption="img 3"
-    size="medium"    
-%}
+    {% include project-media.html
+        type="image"
+        src="sdk_3.png"
+        caption="img 3"
+        size="medium"    
+    %}
 2.  [Auvidea 펌웨어 사이트](https://auvidea.eu/firmware/) 에서 \*\*X220, X221, X400용 펌웨어 (JetPack 5.1.2용)\*\*를 다운로드합니다.(img 4)
-{% include project-media.html
-    type="image"
-    src="sdk_4.png"
-    caption="img 4"
-    size="medium"    
-%}
+    {% include project-media.html
+        type="image"
+        src="sdk_4.png"
+        caption="img 4"
+        size="medium"    
+    %}
 3. 다운로드한 파일의 압축을 `kernel_out` 폴더가 나올 때까지 반복 해제합니다.
 4.  `kernel_out` 내부의 파일들을 `Linux_for_Tegra` 폴더로 복사(덮어쓰기) 합니다.(img 5)
       * 대상 경로 예시: `~/nvidia/nvidia_sdk/JetPack_5.1.2_Linux_JETSON_AGX_XAVIER_TARGETS/Linux_for_Tegra`
-{% include project-media.html
-    type="image"
-    src="sdk_5.png"
-    caption="img 5"
-    size="medium"    
-%}
+    {% include project-media.html
+        type="image"
+        src="sdk_5.png"
+        caption="img 5"
+        size="medium"    
+    %}
 
 ### 3.3 바이너리 적용
 
