@@ -31,6 +31,14 @@ permalink: /docs/Jetson_AGX_Xavier/
 2.  전원, 이더넷, USB 등을 연결합니다.
 3.  **USB-C 포트**를 사용하여 Host PC와 Jetson을 연결합니다.
 
+{% include project-media.html
+    type="image"
+    src="jetson_connect_pc.png"
+    caption="PC 연결법"
+    size="medium"    
+%}
+
+
 -----
 
 ## 2\. Host PC 환경 설정 (Windows WSL)
@@ -72,8 +80,15 @@ X221D 보드는 일반적인 방법으로 설치가 불가능하므로 **JetPack
     ```bash
     sdkmanager --archivedversions
     ```
+{% include project-media.html
+    type="image"
+    src="sdk_1.png"
+    caption="설정 화면 1"
+    size="medium"    
+%}
 
-2.  설정 화면에서 다음과 같이 선택합니다:
+
+2.  설정 화면에서 다음과 같이 선택합니다 (기기 인식이 안되는 것은 정상입니다.)(설정 화면 1):
       * **Target Hardware**: Jetson AGX Xavier modules
       * **JetPack Version**: 5.1.2
 
