@@ -1,0 +1,11 @@
+- title: "My First Documentation"
+  date: "2025-05-20"
+  description: "This is a sample documentation page. You can write tutorials, notes, or research logs here."
+  category: "Tutorial"
+  page_url: "/docs/sample_doc/"
+
+- title: "Research Note: Robot Kinematics"
+  date: "2025-04-10"
+  description: "Summary of kinematic equations and study notes."
+  category: "Study"
+  page_url: "#"

@@ -65,3 +65,27 @@ layout: default
         {% endfor %}
     </div>
 </div>
+
+
+<!-- Docs Section (New!) -->
+<div class="section">
+    <h2>Docs</h2>
+    <div class="projects-list"> <!-- 기존 스타일 재사용 -->
+        {% for doc in site.data.docs %}
+        <div class="project-item">
+            <h3>
+                {% if doc.page_url %}
+                <a href="{{ doc.page_url | relative_url }}">{{ doc.title }}</a>
+                {% else %}
+                {{ doc.title }}
+                {% endif %}
+            </h3>
+            <div class="project-meta">
+                {{ doc.date | date: "%Y.%m.%d" }} 
+                {% if doc.category %}• {{ doc.category }}{% endif %}
+            </div>
+            <div class="project-description">{{ doc.description }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

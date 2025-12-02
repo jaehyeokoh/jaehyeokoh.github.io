@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.title }} - {{ page.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ '/assets/css/zoom.css' | relative_url }}">
+</head>
+
+<body>
+    <div class="project-page">
+        <!-- 메인으로 돌아가기 링크 -->
+        <div class="back-link">
+            <a href="{{ '/' | relative_url }}">&larr; Back to Home</a>
+        </div>
+        
+        <!-- 문서 헤더 -->
+        <div class="project-header">
+            <h1>{{ page.title }}</h1>
+            <div class="project-meta">
+                <!-- 날짜 표시 -->
+                {% if page.date %}
+                <span class="year">{{ page.date | date: "%Y.%m.%d" }}</span>
+                {% endif %}
+                
+                <!-- 카테고리 표시 (기존 tech-stack 스타일 재사용) -->
+                {% if page.category %}
+                <span class="tech-stack">{{ page.category }}</span>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- 문서 본문 -->
+        <div class="project-content">
+            {{ content }}
+        </div>
+    </div>
+    <script src="{{ '/assets/js/zoom.js' | relative_url }}"></script>
+</body>
+</html>
