@@ -1,5 +1,5 @@
 - title: "Jetson AGX Xavier (X221D Carrier Board) 설치 및 설정 가이드"
-  date: "2025-05-20"
+  date: "2025-12"
   description: "Jetson AGX Xavier 와 X221D 보드에서의 Jetpack 설치 방법 (window 환경)"
   category: "Tutorial"
   page_url: "/docs/Jetson_AGX_Xavier/"
