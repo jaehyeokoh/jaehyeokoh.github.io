@@ -122,7 +122,8 @@ X221D 보드는 일반적인 방법으로 설치가 불가능하므로 **JetPack
 3. 다운로드한 파일의 압축을 `kernel_out` 폴더가 나올 때까지 반복 해제합니다.
 {:start="3"}
 
-4. `kernel_out` 내부의 파일들을 `Linux_for_Tegra` 폴더로 복사(덮어쓰기) 합니다.(img 5){:start="4"}
+4. `kernel_out` 내부의 파일들을 `Linux_for_Tegra` 폴더로 복사(덮어쓰기) 합니다.(img 5)
+{:start="4"}
    * 대상 경로 예시: `~/nvidia/nvidia_sdk/JetPack_5.1.2_Linux_JETSON_AGX_XAVIER_TARGETS/Linux_for_Tegra`
 
 {% include project-media.html
